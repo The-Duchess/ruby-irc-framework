@@ -95,4 +95,4 @@
 	ircbot.add_admin("apels")
 	ircbot.remove_admin("apels")
 
-and [example bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/examplebot.rb) is provided
+an [example bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/examplebot.rb) is provided
