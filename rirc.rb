@@ -149,6 +149,9 @@ class IRCBot
 		say "VERSION"
 		say "USER #{@user_name} * * :#{@real_name}"
 		nick(@nick)
+		if @nickserv_pass != ""
+			say "PRIVMSG nickserv :#{@nickserv_pass}"
+		end
 	end
 
 	def read
