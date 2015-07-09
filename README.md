@@ -1,5 +1,17 @@
 # **ruby-irc-framework**
 
+# Use
+
+	require 'rirc.rb'
+	
+	ircbot = IRCBot.new(network, port, nick, user_name, real_name)
+	
+	# some setup
+	
+	until ircbot.socket.eof do
+		# do some stuff
+	end
+
 # Classes Provided
 
 - IRC_Message
