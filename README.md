@@ -1,6 +1,9 @@
 # **ruby-irc-framework**
 
-# Use
+# To Use
+
+> place rirc.rb in the same directory as your main ircbot file
+
 
 	require 'rirc.rb'
 	
@@ -11,6 +14,7 @@
 	until ircbot.socket.eof do
 		# do some stuff
 	end
+	
 
 # Classes Provided
 
