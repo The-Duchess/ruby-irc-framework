@@ -20,6 +20,28 @@ class IRC_message
 	def message
 		return @message
 	end
+	
+	def check_regex(type, regex)
+		if type == "command"
+			return true if @command.match(regex) end
+		elsif type == "nick"
+			return true if @nick.match(regex) end
+		elsif type == "channel"
+			return true if @channel.match(regex) end
+		elsif type == "message"
+			return true if @message.match(regex) end
+		else # default to message
+			return true if @message.match(regex) end	
+		end
+		
+		return false
+	end
+	
+	def message_regex(regex)
+		return true if @message.match(regex) end
+		
+		return false
+	end
 
 	def nick
 		return @nick
