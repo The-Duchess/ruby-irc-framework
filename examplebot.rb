@@ -62,7 +62,7 @@ until bot.socket.eof? do
 			reason = ""
 			1.upto(tokens.length - 1) { |a| reason.concat("#{a} ") }
 			reason = reason[0..-2].to_s
-			bot.part(reason)
+			bot.quit(reason)
 		end
 	end
 end
