@@ -18,7 +18,7 @@
 
 	ircmsg.message_regex(/^`join /)
 
-- IRCBOT
+- IRCBot
 
 >Provides a basic core irc bot
 
