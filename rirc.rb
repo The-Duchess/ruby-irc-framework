@@ -58,7 +58,7 @@ class IRCBot
 
 	def nick
 
-		def @nick
+		return @nick
 	end
 
 	def user_name
