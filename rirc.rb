@@ -75,7 +75,7 @@ class Pluginf
 	end
 end
 
-class plugin_manager
+class Plugin_manager
 	def initialize(plugin_folder)
 		@plugins = []
 		@plugin_folder = plugin_folder
