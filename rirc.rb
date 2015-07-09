@@ -159,7 +159,6 @@ class Plugin_manager
 	end
 
 	# load
-	# to do: solve the issue of the old plugins using a global array
 	def load(name)
 
 		if plugin_loaded(name)
