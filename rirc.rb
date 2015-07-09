@@ -20,28 +20,6 @@ class IRC_message
 	def message
 		return @message
 	end
-	
-	def check_regex(type, regex)
-		if type == "command"
-			return true if @command.match(regex) end
-		elsif type == "nick"
-			return true if @nick.match(regex) end
-		elsif type == "channel"
-			return true if @channel.match(regex) end
-		elsif type == "message"
-			return true if @message.match(regex) end
-		else # default to message
-			return true if @message.match(regex) end	
-		end
-		
-		return false
-	end
-	
-	def message_regex(regex)
-		return true if @message.match(regex) end
-		
-		return false
-	end
 
 	def nick
 		return @nick
@@ -53,6 +31,190 @@ class IRC_message
 
 	def channel
 		return @channel
+	end
+end
+
+class Pluginf
+
+	def initialize(regex, name, file_name, help)
+		@regexp = Regexp.new(regex.to_s)
+		@name = name.to_s
+		@file_name = file_name.to_s
+		@help = help
+		@chan_list = []
+		@chan_list.push("any")
+	end
+
+	# default function
+	def script(message, nick, chan)
+		
+	end
+
+	def regex
+		return @regexp
+	end
+
+	def chans
+		return @chan_list
+	end
+
+	def name
+		return @name
+	end
+
+	def file_name
+		return @file_name
+	end
+
+	def help
+		return @help
+	end
+
+	def cleanup
+		return ""
+	end
+end
+
+class plugin_manager
+	def initialize(plugin_folder)
+		@plugins = []
+		@plugin_folder = plugin_folder
+	end
+
+	# returns all the plugins
+	def plugins
+
+		return @plugins
+	end
+
+	# search functions
+	def get_plugin(name) # gets a plugin by name or nil if it is not loaded
+		@plugins.each { |a| if a.name == name then return a end }
+
+		return nil
+	end
+
+	def plugin_help(name) # gets the help for a plugin
+		@plugins.each { |a| if a.name == name then return a.help end }
+
+		return nil
+	end
+
+	def plugin_file_name(name) # gets the file name for a plugin
+		@plugins.each { |a| if a.name == name then return a.file_name end }
+
+		return nil
+	end
+
+	def plugin_chans(name) # gets the array of channels for a plugin
+		@plugins.each { |a| if a.name == name then return a.chans end }
+
+		return nil
+	end
+
+	def plugin_regex(name) # gets the regex for a plugin
+		@plugins.each { |a| if a.name == name then return a.regex end }
+
+		return nil
+	end
+
+	# check if a plugin is loaded
+	def plugin_loaded(name)
+		@plugins.each { |a| if a.name == name then return true end }
+
+		return false
+	end
+
+	# regex check function
+	# this function uses the IRC_message object for message input
+	# inputs:
+	# 	- name
+	# 	- IRC_message object
+	# 	- array of admins [can be an empty array]
+	# 	- backlog array [can be an empty array]
+	# output: string
+ 	def check_plugin(name, message, admins, backlog) #checks an individual plugin's (by name) regex against message
+		if !plugin_loaded(name)
+			return ""
+		else
+			if message.message.match(get_plugin(name).regex)
+				return get_plugin(name).script(message, admins, backlog) # plugins use the IRC_message object
+			end
+		end
+
+		return ""
+	end
+
+	# regex check function that returns responses for all plugins in an array
+	# inputs:
+	# 	- IRC_message object
+	# 	- array of admins [can be an empty array]
+	# 	- backlog array [can be an empty array]
+	# output: array of strings
+	def check_all(message, admins, backlog)
+		response = []
+		@plugins.each { |a| response.push(check_plugin(a.name, message, admins, backlog)) }
+
+		return response
+	end
+
+	# load
+	# to do: solve the issue of the old plugins using a global array
+	def load(name)
+
+		if plugin_loaded(name)
+			return "plugin is already loaded"
+		end
+
+		$LOAD_PATH << "#{@plugin_folder}"
+		response = ""
+		$temp_plugin = nil # allows a global to be set, thus allowing the plugin to create a temporary we can add
+		if name.match(/.rb$/)
+			begin
+				load "#{name}"
+				@plugins.push($temp_plugin)
+				$temp_plugin = nil
+				response = "#{name[0..-4]} loaded"
+			rescue => e
+				response = "cannot load plugin"
+			end
+		else
+			begin
+				load "#{name}.rb"
+				@plugins.push($temp_plugin)
+				$temp_plugin = nil
+				response = "#{name} loaded"
+			rescue => e
+				response = "cannot load plugin"
+			end
+		end
+		$LOAD_PATH << './'
+		return response
+	end
+
+	# unload
+	def unload(name)
+
+		if !plugin_loaded(name)
+			return "plugin is not loaded"
+		end
+
+		get_plugin(name).cleanup
+		@plugins.delete_if { |a| a.name == name }
+	end
+
+	# reload
+	def reload(name)
+
+		if !plugin_loaded(name)
+			return "plugin is not loaded"
+		end
+
+		temp_name = name
+		temp_file_name = get_plugin(name).file_name
+
+		unload(temp_name)
+		load(temp_file_name)
 	end
 end
 
@@ -78,7 +240,7 @@ class IRCBot
 		return @port
 	end
 
-	def nick_name
+	def nick
 
 		return @nick
 	end
@@ -128,8 +290,7 @@ class IRCBot
 	end
 
 	def nick(nick)
-		
-		@nick = nick
+
 		say "NICK #{nick}"
 	end
 
