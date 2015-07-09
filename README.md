@@ -15,6 +15,7 @@
 		# do some stuff
 	end
 	
+> an [example bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/examplebot.rb) is provided
 
 # Classes Provided
 
@@ -110,5 +111,5 @@
 
 	ircbot.add_admin("apels")
 	ircbot.remove_admin("apels")
+	
 
-an [example bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/examplebot.rb) is provided
