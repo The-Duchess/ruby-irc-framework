@@ -56,7 +56,7 @@ class IRCBot
 		return @port
 	end
 
-	def nick
+	def nick_name
 
 		return @nick
 	end
@@ -106,7 +106,8 @@ class IRCBot
 	end
 
 	def nick(nick)
-
+		
+		@nick = nick
 		say "NICK #{nick}"
 	end
 
