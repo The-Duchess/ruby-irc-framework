@@ -14,7 +14,7 @@
 
 >- message_regex which just checks the message (param) against a regex
 
-- IRCBOT
+- IRCBot
 
 >Provides a basic core irc bot
 
