@@ -45,10 +45,10 @@ end
 #
 # reg_p = Regexp.union(prefix)
 
-reg_p = // # regex to call the plugin
-fn = "file name" # file name
-na = "template" # name for plugin
-de = "NOTES ^| HELP" # description and or help
+reg = // # regex to call the plugin
+filename = "file name" # file name
+pluginname = "template" # name for plugin
+description = "NOTES ^| HELP" # description and or help
 
 # plugin = Class_name.new(regex, name, file_name, help)
-$temp_plugin = Template.new(reg_p, na, fn, de)
+$temp_plugin = Template.new(reg, pluginname, filename, description)
