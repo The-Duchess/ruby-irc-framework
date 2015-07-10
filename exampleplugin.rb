@@ -46,7 +46,7 @@ end
 # reg_p = Regexp.union(prefix)
 
 reg = // # regex to call the plugin
-filename = "file name" # file name
+filename = "exampleplugin.rb" # file name
 pluginname = "template" # name for plugin
 description = "NOTES ^| HELP" # description and or help
 
