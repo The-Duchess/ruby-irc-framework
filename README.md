@@ -172,7 +172,7 @@
 
 >>  ↪ array of admins [can be an empty array]
 
->>  ↪ backlog array [can be an empty array]
+>>  ↪ backlog array of IRC_message objects [can be an empty array]
 
 >> output: string
 
@@ -190,7 +190,7 @@
 
 >>  ↪ array of admins [can be an empty array]
 
->>  ↪ backlog array [can be an empty array]
+>>  ↪ backlog array of IRC_message objects [can be an empty array]
 
 >> output: array of strings
 
