@@ -6,6 +6,7 @@
 require 'rirc.rb'
 
 class Template < Pluginf
+	
 	# any functions you may need can be included here
 
 	# your definition for function called if the regex for the plugin matches the message.message
