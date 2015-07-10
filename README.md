@@ -1,5 +1,7 @@
 # **ruby-irc-framework**
 
+> Author: Alice "Duchess" Archer
+
 # To Use
 
 > place rirc.rb in the same directory as your main ircbot file
