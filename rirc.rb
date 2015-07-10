@@ -47,7 +47,7 @@ class Pluginf
 
 	# default function
 	def script(message, nick, chan)
-		
+
 	end
 
 	def regex
@@ -137,7 +137,7 @@ class Plugin_manager
 		if !plugin_loaded(name)
 			return ""
 		else
-			if message.message.match(get_plugin(name).regex)
+			if message.message.match(get_plugin(name).regex) and (get_plugin(name).chans.include? "any" or get_plugin(name).chans.include? message.channel)
 				return get_plugin(name).script(message, admins, backlog) # plugins use the IRC_message object
 			end
 		end
@@ -373,7 +373,7 @@ class IRCBot
 	end
 
 	def remove_admin(nick)
-		
+
 		@admins.delete_if { |a| a == nick }
 	end
 end

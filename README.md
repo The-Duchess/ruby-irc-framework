@@ -6,15 +6,15 @@
 
 
 	require 'rirc.rb'
-	
+
 	ircbot = IRCBot.new(network, port, nick, user_name, real_name)
-	
+
 	# some setup
-	
+
 	until ircbot.socket.eof do
 		# do some stuff
 	end
-	
+
 > an [example bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/examplebot.rb) is provided
 
 # Classes Provided
@@ -33,7 +33,7 @@
 
 >- message_regex which just checks the message (param) against a regex
 
-	ircmsg.message_regex(/^`join /)
+	ircmsg.message_regex(/^!join /)
 
 - IRCBot
 
@@ -111,5 +111,99 @@
 
 	ircbot.add_admin("apels")
 	ircbot.remove_admin("apels")
-	
 
+
+- Plugin_manager
+
+> initialized with the plugin folder file path
+
+	pluginmgr = Plugin_manager.new("/path/to/plugin/folder")
+
+> Plugins based on the [plugin template](https://github.com/The-Duchess/ruby-irc-framework/blob/master/exampleplugin.rb)  the framework supports plugin management from the plugin manager which handles the use of plugins.
+
+> Provided fuctions
+
+>- plugins returns the array of Plugin objects
+
+	new_plugin_list = pluginmgr.plugins
+
+> search functions
+
+>- get_plugin gets a plugin by name and returns a Plugin object or nil if the plugin is not loaded
+
+	temp_plugin = pluginmgr.get_plugin("name")
+
+>- plugin_help gets a plugin's help by name
+
+	temp_help = pluginmgr.plugin_help("name")
+
+>- plugin_file_name gets a plugin's file name by name
+
+	temp_file_name = pluginmgr.plugin_file_name("name")
+
+>- plugin_chans gets a plugin's channel list by name
+
+	temp_chans = pluginmgr.plugin_chans("name")
+
+>- plugin_regex gets a plugin's regex by name
+
+	temp_regex = pluginmgr.plugin_regex("name")
+
+>- plugin_loaded checks if a plugin is loaded by name
+
+	if pluginmgr.plugin_loaded("name") then return true end
+
+> regex functions
+
+>- check_plugin
+
+	temp_response = pluginmgr.check_plugin("name", ircmessage, ["apels"], [])
+
+>> regex check function
+
+>> this function uses the IRC_message object for message input
+
+>> inputs:
+
+>>  ↪ name
+
+>>  ↪ IRC_message object
+
+>>  ↪ array of admins [can be an empty array]
+
+>>  ↪ backlog array [can be an empty array]
+
+>> output: string
+
+>- check_all
+
+	temp_responses = pluginmgr.check_all(ircmessage, ["apels"], [])
+
+>> this function uses the IRC_message object for message input
+
+>> regex check function that returns responses for all plugins in an array
+
+>> inputs:
+
+>>  ↪ IRC_message object
+
+>>  ↪ array of admins [can be an empty array]
+
+>>  ↪ backlog array [can be an empty array]
+
+>> output: array of strings
+
+> plugin loading, unloading and reloading
+
+>- load loads a plugin by file name (with or without the .rb extension) in the plugin folder
+
+	pluginmgr.load("name.rb")
+	pluginmgr.load("name")
+
+>- unload unloads a plugin by name
+
+	pluginmgr.unload("name")
+
+>- reload reloads a plugin by name
+
+	pluginmgr.reload("name")
