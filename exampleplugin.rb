@@ -8,10 +8,15 @@ require 'rirc.rb'
 class Template < Pluginf
 	#any functions you may need
 
-	#your definition for script
+	#your definition for function called if the regex for the plugin matches the message.message
+	# inputs:
+	# 	- IRC_message object
+	# 	- admins array
+	# 	- backlog array of IRC_message objects
 	def script(message, admins, backlog)
 
-		return "string"
+		# plugins must return the raw mesaage they wish to have sent to the socket
+		return "PRIVMSG #{message.chan} :hello"
 	end
 end
 
