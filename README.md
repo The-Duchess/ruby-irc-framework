@@ -119,7 +119,7 @@
 
 	pluginmgr = Plugin_manager.new("/path/to/plugin/folder")
 
-> Plugins based on the [plugin template](https://github.com/The-Duchess/ruby-irc-framework/blob/master/exampleplugin.rb)  the framework supports plugin management from the plugin manager which handles the use of plugins.
+> Plugins based on the [plugin template](https://github.com/The-Duchess/ruby-irc-framework/blob/master/exampleplugin.rb) the framework supports for plugin management.
 
 > Provided fuctions
 
