@@ -13,8 +13,10 @@ admins = ["apels"]
 pass = "pass"
 nickserv_pass = "pass"
 backlog = []
+plugins_list = ["exampleplugin.rb"]
 
 bot = IRCBot.new(network, port, nick, username, realname)
+plug = Plugin_Manager.new("./plugins")
 
 # initial connect
 bot.connect
@@ -36,6 +38,9 @@ channels.each { |a| bot.join(a) }
 
 # setting admins
 admins.each { |a| bot.add_admin(a) }
+
+# loading plugins
+plugins_list.each { |a| plug.load(a) }
 
 # run
 until bot.socket.eof? do
@@ -63,6 +68,14 @@ until bot.socket.eof? do
 			1.upto(tokens.length - 1) { |a| reason.concat("#{a} ") }
 			reason = reason[0..-2].to_s
 			bot.quit(reason)
+		end
+
+		responses = plug.check_all(msg, admins, backlog)
+
+		response.each do |a|
+			if a != ""
+				bot.say(a)
+			end
 		end
 	end
 end
