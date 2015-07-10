@@ -159,7 +159,6 @@
 
 	temp_response = pluginmgr.check_plugin("name", ircmessage, ["apels"], [])
 
->> regex check function
 
 >> this function uses the IRC_message object for message input
 
