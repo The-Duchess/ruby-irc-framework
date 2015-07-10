@@ -182,7 +182,7 @@
 
 >> this function uses the IRC_message object for message input
 
->> regex check function that returns responses for all plugins in an array
+>> regex check function that returns responses for loaded plugins
 
 >> inputs:
 
