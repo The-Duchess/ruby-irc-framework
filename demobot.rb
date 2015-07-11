@@ -16,16 +16,22 @@ realname = "rubybot"
 channels = ["#botdev"]
 admins = ["apels"]
 backlog = []
-#plugins_list = ["exampleplugin.rb"]
+plugins_list = ["cat.rb"]
 
 bot = IRCBot.new(network, port, nick, username, realname)
 #plug = Plugin_Manager.new("./plugins")
 
 # initial connect
 bot.connect
+puts "Connecting"
+puts "	↪ network = irc.cat.pdx.edu"
+puts "	↪ port = 6667"
+
 
 # send connect info
 bot.auth
+puts "Auth"
+puts "	↪ nick = apelsbot"
 
 # joining channels
 channels.each { |a| bot.join(a) }
@@ -34,12 +40,18 @@ channels.each { |a| bot.join(a) }
 admins.each { |a| bot.add_admin(a) }
 
 # loading plugins
-#plugins_list.each { |a| plug.load(a) }
+puts "Loading plugins"
+plugins_list.each do |a|
+	puts "	↪ #{a}"
+	plug.load(a)
+end
+
+puts "Done"
 
 until bot.socket.eof? do
 	msg = bot.read
 
-	if msg == "PING"
+	if msg == "PING" # PING and PONG are handled by the reading of the socket
 		next
 	else
 		msg = bot.parse(msg)
@@ -67,12 +79,12 @@ until bot.socket.eof? do
 			next
 		end
 
-		#responses = plug.check_all(msg, admins, backlog)
+		responses = plug.check_all(msg, admins, backlog)
 
-		#response.each do |a|
-		#	if a != ""
-		#		bot.say(a)
-		#	end
-		#end
+		response.each do |a|
+			if a != ""
+				bot.say(a)
+			end
+		end
 	end
 end
