@@ -39,7 +39,7 @@
 
 	msg = ircbot.read
 	ircbot.parse(msg)
-	\# or
+	# or
 	ircmsg = IRC_message.new(command, nick, channel, message)
 
 >Provides a structure to store irc messages in a parsed form
