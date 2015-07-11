@@ -313,7 +313,7 @@ class IRCBot
 		return @port
 	end
 
-	def nick
+	def nick_name
 
 		return @nick
 	end
