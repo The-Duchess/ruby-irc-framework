@@ -18,7 +18,10 @@ admins = ["apels"]
 backlog = []
 plugins_list = ["cat.rb"]
 
+# create the bot
 bot = IRCBot.new(network, port, nick, username, realname)
+
+# create the plugin manager and tell it where to look for plugins
 plug = Plugin_manager.new("./plugins")
 
 # initial connect
@@ -49,6 +52,7 @@ end
 
 puts "Done"
 
+# main loop
 until bot.socket.eof? do
 	msg = bot.read
 
