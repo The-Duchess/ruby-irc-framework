@@ -19,7 +19,7 @@ backlog = []
 plugins_list = ["cat.rb"]
 
 bot = IRCBot.new(network, port, nick, username, realname)
-plug = Plugin_Manager.new("./plugins")
+plug = Plugin_manager.new("./plugins")
 
 # initial connect
 bot.connect
