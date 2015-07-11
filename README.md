@@ -35,6 +35,13 @@
 
 **→ IRC_Message**
 
+> created by ircbot.parse or initialized with message information
+
+	msg = ircbot.read
+	ircbot.parse(msg)
+	\# or
+	ircmsg = IRC_message.new(command, nick, channel, message)
+
 >Provides a structure to store irc messages in a parsed form
 
 >Provides the functions
@@ -50,6 +57,10 @@
 	ircmsg.message_regex(/^!join /)
 
 **→ IRCBot**
+
+> initialized with connection information
+
+	ircbot = IRCBot.new(network, port, nick, user_name, real_name)
 
 >Provides a basic core irc bot
 
