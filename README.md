@@ -190,15 +190,16 @@
 
 >> inputs:
 
->>  ↪ name
+>>  ↰ name
 
->>  ↪ IRC_message object
+>>  ↰ IRC_message object
 
->>  ↪ array of admins [can be an empty array]
+>>  ↰ array of admins [can be an empty array]
 
->>  ↪ backlog array of IRC_message objects [can be an empty array]
+>>  ↰ backlog array of IRC_message objects [can be an empty array]
 
->> output: string
+>> output:
+>>  ↱ string
 
 >- check_all
 
@@ -210,13 +211,14 @@
 
 >> inputs:
 
->>  ↪ IRC_message object
+>>  ↰ IRC_message object
 
->>  ↪ array of admins [can be an empty array]
+>>  ↰ array of admins [can be an empty array]
 
->>  ↪ backlog array of IRC_message objects [can be an empty array]
+>>  ↰ backlog array of IRC_message objects [can be an empty array]
 
->> output: array of strings
+>> output: 
+>>  ↱ array of strings
 
 > plugin loading, unloading and reloading
 
