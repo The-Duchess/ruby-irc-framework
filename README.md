@@ -1,6 +1,6 @@
 # **ruby-irc-framework**
 
-> The [Framework](https://github.com/The-Duchess/ruby-irc-framework/blob/master/rirc.rb)
+> The rirc [Framework](https://github.com/The-Duchess/ruby-irc-framework/blob/master/rirc.rb)
 
 > Author: Alice "Duchess" Archer
 
