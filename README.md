@@ -4,6 +4,8 @@
 
 > Author: Alice "Duchess" Archer
 
+> Copyright 2015
+
 > Copying:
 
 > This source code comes with no warranty, implied or otherwise, and is published under the GNU/GPL v3 license.
