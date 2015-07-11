@@ -147,6 +147,8 @@
 
 > Plugins based on the [plugin template](https://github.com/The-Duchess/ruby-irc-framework/blob/master/exampleplugin.rb) the framework supports for plugin management.
 
+> The plugin template will tell you what parts are neccessary for creating a plugin.
+
 > Provided fuctions
 
 >- plugins returns the array of Plugin objects
