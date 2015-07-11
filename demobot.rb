@@ -46,8 +46,7 @@ admins.each { |a| bot.add_admin(a) }
 puts "Loading plugins"
 plugins_list.each do |a|
 	puts "loading #{a}..."
-	plug.load(a)
-	puts "	↪ #{a} loaded"
+	puts plug.load(a)
 end
 
 puts "Done"
