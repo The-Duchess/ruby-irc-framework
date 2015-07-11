@@ -48,10 +48,12 @@ end
 #
 # reg_p = Regexp.union(prefix)
 
+# information the plugin needs to be initialized with
 reg = // # regex to call the plugin
 filename = "exampleplugin.rb" # file name
 pluginname = "template" # name for plugin
 description = "NOTES ^| HELP" # description and or help
 
 # plugin = Class_name.new(regex, name, file_name, help)
+# this temporary global is used for handing the new plugin back to the bot
 $temp_plugin = Template.new(reg, pluginname, filename, description)
