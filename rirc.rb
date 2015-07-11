@@ -281,8 +281,8 @@ class Plugin_manager
 		if !plugin_loaded(name)
 			return "plugin is not loaded"
 		end
-		
-		temp_file_name = get_plugin(name).plugin_file_name
+
+		temp_file_name = get_plugin(name).file_name
 
 		unload(name)
 		load(temp_file_name)
