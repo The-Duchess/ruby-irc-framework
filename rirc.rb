@@ -210,6 +210,7 @@ class Plugin_manager
 	def load(name)
 
 		p name.class.to_s
+		p name
 
 		if plugin_loaded(name)
 			return "plugin is already loaded"
