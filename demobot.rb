@@ -64,9 +64,9 @@ until bot.socket.eof? do
 		msg = bot.parse(msg)
 		backlog.push(msg)
 
-		if msg.message.match(/^hello/) then bot.privmsg(msg.channel, "hello #{msg.nick}"); next; end
+		if msg.message_regex(/^hello/) then bot.privmsg(msg.channel, "hello #{msg.nick}"); next; end
 
-		if msg.message.match(/^`part /)
+		if msg.message_regex(/^`part /)
 			tokens = msg.message.split(" ")
 			reason = ""
 			1.upto(tokens.length - 1) { |a| reason.concat("#{a} ") }
@@ -76,7 +76,7 @@ until bot.socket.eof? do
 			next
 		end
 
-		if msg.message.match(/^`quit /)
+		if msg.message_regex(/^`quit /)
 			tokens = msg.message.split(" ")
 			reason = ""
 			1.upto(tokens.length - 1) { |a| reason.concat("#{a} ") }
@@ -84,6 +84,34 @@ until bot.socket.eof? do
 			bot.quit(reason)
 
 			next
+		end
+
+		if msg.message_regex(/^`help /)
+			tokens = msg.message.split(" ")
+			help = plug.plugin_help(tokens[1])
+			if help != nil
+				bot.privmsg(msg.channel, "#{msg.nick}: #{help}")
+			else
+				bot.privmsg(msg.channel, "#{msg.nick}: plugin #{tokens[1]} not found")
+			end
+		end
+
+		if msg.message_regex(/^`load /)
+			tokens = msg.message.split(" ")
+			response = plug.plugin_load(tokens[1])
+			bot.privmsg(msg.channel, "#{response}")
+		end
+
+		if msg.message_regex(/^`unload /)
+			tokens = msg.message.split(" ")
+			plug.unload(tokens[1])
+			bot.privmsg(msg.channel, "#{tokens[1]} unloaded")
+		end
+
+		if msg.message_regex(/^`reload /)
+			tokens = msg.message.split(" ")
+			plug.reload(tokens[1])
+			bot.privmsg(msg.channel, "#{tokens[1]} reloaded")
 		end
 
 		responses = plug.check_all(msg, admins, backlog)
