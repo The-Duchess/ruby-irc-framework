@@ -1,4 +1,4 @@
-# **ruby-irc-framework**
+# **Ruby IRC Framework**
 
 > The rirc [Framework](https://github.com/The-Duchess/ruby-irc-framework/blob/master/rirc.rb)
 
