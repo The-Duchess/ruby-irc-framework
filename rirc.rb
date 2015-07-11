@@ -84,35 +84,64 @@ class Plugin_manager
 	# returns all the plugins
 	def plugins
 
+		if @plugins.length == 0
+			return []
+		end
+
 		return @plugins
 	end
 
 	# search functions
 	def get_plugin(name) # gets a plugin by name or nil if it is not loaded
+
+		if @plugins.length == 0
+			return nil
+		end
+
 		@plugins.each { |a| if a.name == name then return a end }
 
 		return nil
 	end
 
 	def plugin_help(name) # gets the help for a plugin
+
+		if @plugins.length == 0
+			return nil
+		end
+
 		@plugins.each { |a| if a.name == name then return a.help end }
 
 		return nil
 	end
 
 	def plugin_file_name(name) # gets the file name for a plugin
+
+		if @plugins.length == 0
+			return nil
+		end
+
 		@plugins.each { |a| if a.name == name then return a.file_name end }
 
 		return nil
 	end
 
 	def plugin_chans(name) # gets the array of channels for a plugin
+
+		if @plugins.length == 0
+			return nil
+		end
+
 		@plugins.each { |a| if a.name == name then return a.chans end }
 
 		return nil
 	end
 
 	def plugin_regex(name) # gets the regex for a plugin
+
+		if @plugins.length == 0
+			return nil
+		end
+
 		@plugins.each { |a| if a.name == name then return a.regex end }
 
 		return nil
@@ -120,6 +149,11 @@ class Plugin_manager
 
 	# check if a plugin is loaded
 	def plugin_loaded(name)
+
+		if @plugins.length == 0
+			return false
+		end
+
 		@plugins.each do |a|
 			if a.name == name 
 				return true
@@ -138,6 +172,11 @@ class Plugin_manager
 	# 	- backlog array [can be an empty array]
 	# output: string
  	def check_plugin(name, message, admins, backlog) #checks an individual plugin's (by name) regex against message
+
+ 		if @plugins.length == 0
+			return ""
+		end
+
 		if !plugin_loaded(name)
 			return ""
 		else
@@ -156,6 +195,11 @@ class Plugin_manager
 	# 	- backlog array [can be an empty array]
 	# output: array of strings
 	def check_all(message, admins, backlog)
+
+		if @plugins.length == 0
+			return []
+		end
+
 		response = []
 		@plugins.each { |a| response.push(check_plugin(a.name, message, admins, backlog)) }
 
