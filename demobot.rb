@@ -14,7 +14,7 @@ nick = "rubybot"
 username = "rubybot"
 realname = "rubybot"
 channels = ["#YOURCHANNEL"]
-admins = ["YOUNICK"]
+admins = ["YOURNICK"]
 backlog = []
 plugins_list = ["cat.rb"]
 
