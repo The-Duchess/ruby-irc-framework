@@ -217,14 +217,14 @@ class Plugin_manager
 		response = ""
 		$temp_plugin = nil # allows a global to be set, thus allowing the plugin to create a temporary we can add
 		if name.match(/.rb$/)
-			#begin
+			begin
 				load "#{name}"
 				@plugins.push($temp_plugin)
 				$temp_plugin = nil
 				response = "#{name[0..-4]} loaded"
-			#rescue => e
-			#	response = "cannot load plugin"
-			#end
+			rescue => e
+				response = "cannot load plugin"
+			end
 		else
 			begin
 				load "#{name}.rb"
