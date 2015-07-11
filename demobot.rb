@@ -8,13 +8,13 @@
 load 'rirc.rb'
 
 # setup
-network = "irc.cat.pdx.edu"
+network = "irc.freenode.net"
 port = 6667
-nick = "apelsbot"
+nick = "rubybot"
 username = "rubybot"
 realname = "rubybot"
-channels = ["#botdev"]
-admins = ["apels"]
+channels = ["#YOURCHANNEL"]
+admins = ["YOUNICK"]
 backlog = []
 plugins_list = ["cat.rb"]
 
