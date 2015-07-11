@@ -43,7 +43,7 @@ channels.each { |a| bot.join(a) }
 admins.each { |a| bot.add_admin(a) }
 
 # loading plugins
-plugins_list.each { |a| plug.load(a) }
+plugins_list.each { |a| plug.plugin_load(a) }
 
 # run
 until bot.socket.eof? do

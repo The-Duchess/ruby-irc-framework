@@ -196,7 +196,7 @@
 
 > plugin loading, unloading and reloading
 
->- load loads a plugin by file name (with or without the .rb extension) in the plugin folder
+>- plugin_load loads a plugin by file name (with or without the .rb extension) in the plugin folder
 
 	pluginmgr.load("name.rb")
 	pluginmgr.load("name")
