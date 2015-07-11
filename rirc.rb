@@ -120,7 +120,11 @@ class Plugin_manager
 
 	# check if a plugin is loaded
 	def plugin_loaded(name)
-		@plugins.each { |a| if a.name == name then return true end }
+		@plugins.each do |a|
+			if a.name == name 
+				return true
+			end
+		end
 
 		return false
 	end
