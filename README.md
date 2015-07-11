@@ -161,23 +161,23 @@
 
 	temp_plugin = pluginmgr.get_plugin("name")
 
->- plugin_help gets a plugin's help by name
+>- plugin_help gets a plugin's help by name or nil if the plugin is not loaded
 
 	temp_help = pluginmgr.plugin_help("name")
 
->- plugin_file_name gets a plugin's file name by name
+>- plugin_file_name gets a plugin's file name by name or nil if the plugin is not loaded
 
 	temp_file_name = pluginmgr.plugin_file_name("name")
 
->- plugin_chans gets a plugin's channel list by name
+>- plugin_chans gets a plugin's channel list by name or nil if the plugin is not loaded
 
 	temp_chans = pluginmgr.plugin_chans("name")
 
->- plugin_regex gets a plugin's regex by name
+>- plugin_regex gets a plugin's regex by name or nil if the plugin is not loaded
 
 	temp_regex = pluginmgr.plugin_regex("name")
 
->- plugin_loaded checks if a plugin is loaded by name
+>- plugin_loaded checks if a plugin is loaded by name and returns true if it is loaded
 
 	if pluginmgr.plugin_loaded("name") then return true end
 
