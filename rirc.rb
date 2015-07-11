@@ -271,6 +271,8 @@ class Plugin_manager
 
 		get_plugin(name).cleanup
 		@plugins.delete_if { |a| a.name == name }
+
+		"plugin #{name} unloaded"
 	end
 
 	# reload
@@ -279,12 +281,13 @@ class Plugin_manager
 		if !plugin_loaded(name)
 			return "plugin is not loaded"
 		end
+		
+		temp_file_name = get_plugin(name).plugin_file_name
 
-		temp_name = name
-		temp_file_name = get_plugin(name).file_name
-
-		unload(temp_name)
+		unload(name)
 		load(temp_file_name)
+
+		return "plugin #{name} reloaded"
 	end
 end
 
