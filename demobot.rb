@@ -39,7 +39,7 @@ admins.each { |a| bot.add_admin(a) }
 until bot.socket.eof? do
 	msg = bot.read
 
-	if msg = "PING"
+	if msg == "PING"
 		next
 	else
 		msg = bot.parse(msg)
