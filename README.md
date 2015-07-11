@@ -4,11 +4,11 @@
 
 > Author: Alice "Duchess" Archer
 
-> Copyright 2015
+> Copyright 2015 MIT License
 
 > Copying:
 
-> get back to you on the license
+> see COPYING.md
 
 # To Use
 
