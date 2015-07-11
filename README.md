@@ -15,7 +15,7 @@
 > place rirc.rb in the same directory as your main ircbot file
 
 
-	require 'rirc.rb'
+	load 'rirc.rb'
 
 	ircbot = IRCBot.new(network, port, nick, user_name, real_name)
 
