@@ -67,7 +67,7 @@ until bot.socket.eof? do
 		if msg.message_regex(/^hello/) then bot.privmsg(msg.channel, "hello #{msg.nick}"); next; end
 
 		if msg.message_regex(/^`info$/)
-			bot.privmsg(msg.nick, "this is a demo irc bot build using the rirc framework")
+			bot.privmsg(msg.nick, "this is a demo irc bot built using the rirc framework")
 			bot.privmsg(msg.nick, "the rirc framework is an irc bot framework built in ruby")
 			bot.privmsg(msg.nick, "the rirc framework is developed by Alice Archer")
 			bot.privmsg(msg.nick, "the rirc framework is published under the MIT license")
