@@ -114,6 +114,12 @@ until bot.socket.eof? do
 			bot.privmsg(msg.channel, "#{tokens[1]} reloaded")
 		end
 
+		if msg.message_regex(/^`list$/)
+			names = []
+			plug.plugins.each { |a| names.push(a.name) }
+			names.each { |a| bot.privmsg(msg.channel, a)}
+		end
+
 		responses = plug.check_all(msg, admins, backlog)
 
 		responses.each do |a|
