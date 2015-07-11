@@ -38,7 +38,7 @@
 > created by ircbot.parse or initialized with message information
 
 	msg = ircbot.read
-	ircbot.parse(msg)
+	ircmsg = ircbot.parse(msg)
 	# or
 	ircmsg = IRC_message.new(command, nick, channel, message)
 
