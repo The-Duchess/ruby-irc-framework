@@ -19,9 +19,11 @@ backlog = []
 plugins_list = ["cat.rb"]
 
 # create the bot
+puts "creating bot"
 bot = IRCBot.new(network, port, nick, username, realname)
 
 # create the plugin manager and tell it where to look for plugins
+puts "creating plugin manager"
 plug = Plugin_manager.new("./plugins")
 
 # initial connect
