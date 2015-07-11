@@ -287,9 +287,9 @@ class Plugin_manager
 		p "name: #{name}."
 		p "file name: #{temp_file_name}."
 
-		unload(name)
+		p unload(name)
 
-		load(temp_file_name)
+		p load(temp_file_name)
 
 		return "plugin #{name} reloaded"
 	end
