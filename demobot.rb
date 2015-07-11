@@ -10,9 +10,9 @@ load 'rirc.rb'
 # setup
 network = "irc.freenode.net"
 port = 6667
-nick = "rubybot"
-username = "rubybot"
-realname = "rubybot"
+nick = "rircbot"
+username = "rircbot"
+realname = "rircbot"
 channels = ["#YOURCHANNEL"]
 admins = ["YOURNICK"]
 backlog = []
