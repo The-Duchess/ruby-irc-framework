@@ -33,7 +33,7 @@
 
 # Classes Provided
 
-# **→ IRC_Message**
+**→ IRC_Message**
 
 >Provides a structure to store irc messages in a parsed form
 
@@ -49,7 +49,7 @@
 
 	ircmsg.message_regex(/^!join /)
 
-# **→ IRCBot**
+**→ IRCBot**
 
 >Provides a basic core irc bot
 
@@ -126,8 +126,7 @@
 	ircbot.add_admin("apels")
 	ircbot.remove_admin("apels")
 
-
-# **→ Plugin_manager**
+**→ Plugin_manager**
 
 > initialized with the plugin folder file path
 
