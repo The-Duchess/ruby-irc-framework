@@ -199,7 +199,8 @@
 >>  ↰ backlog array of IRC_message objects [can be an empty array]
 
 >> output:
->>  ↱ string
+
+>>  ↳ string
 
 >- check_all
 
@@ -218,7 +219,8 @@
 >>  ↰ backlog array of IRC_message objects [can be an empty array]
 
 >> output: 
->>  ↱ array of strings
+
+>>  ↳ array of strings
 
 > plugin loading, unloading and reloading
 
