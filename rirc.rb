@@ -32,6 +32,29 @@ class IRC_message
 	def channel
 		return @channel
 	end
+
+	def check_regex(type, regex)
+
+		if type == "command"
+			if @command.match(regex) then return true end
+		elsif type == "nick"
+			if @nick.match(regex) then return true end
+		elsif type == "channel"
+			if @channel.match(regex) then return true end
+		elsif type == "message"
+			if @message.match(regex) then return true end
+		else
+			if @message.match(regex) then return true end
+		end
+
+		return false
+	end
+
+	def message_regex(regex)
+		if @message.match(regex) then return true end
+
+		return false
+	end
 end
 
 class Pluginf
