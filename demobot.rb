@@ -29,14 +29,14 @@ plug = Plugin_manager.new("./plugins")
 # initial connect
 bot.connect
 puts "Connecting"
-puts "	↪ network = irc.cat.pdx.edu"
-puts "	↪ port = 6667"
+puts "	↪ network = #{bot.network}"
+puts "	↪ port = #{bot.port}"
 
 
 # send connect info
 bot.auth
 puts "Auth"
-puts "	↪ nick = apelsbot"
+puts "	↪ nick = #{bot.nick}"
 
 # joining channels
 channels.each { |a| bot.join(a) }
