@@ -36,7 +36,7 @@ puts "	↪ port = #{bot.port}"
 # send connect info
 bot.auth
 puts "Auth"
-puts "	↪ nick = #{bot.nick}"
+puts "	↪ nick = #{bot.nick_name}"
 
 # joining channels
 channels.each { |a| bot.join(a) }
