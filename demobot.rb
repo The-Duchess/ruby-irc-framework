@@ -5,7 +5,7 @@
 # Description:
 # Demo IRC Bot built using my rirc framework
 
-require 'rirc.rb'
+load 'rirc.rb'
 
 # setup
 network = "irc.cat.pdx.edu"

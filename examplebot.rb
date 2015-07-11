@@ -3,7 +3,7 @@
 # note: example code does not actually run
 # a running example should be posted soon
 
-require 'rirc.rb'
+load 'rirc.rb'
 
 # setup
 network = ""
