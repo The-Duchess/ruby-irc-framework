@@ -284,8 +284,8 @@ class Plugin_manager
 
 		temp_file_name = get_plugin(name).file_name
 
-		p "name: #{name}"
-		p "file name: #{temp_file_name}"
+		p "name: #{name}."
+		p "file name: #{temp_file_name}."
 
 		unload(name)
 
