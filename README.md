@@ -186,11 +186,9 @@
 	temp_response = pluginmgr.check_plugin("name", ircmessage, ["apels"], [])
 
 
->> this function uses the IRC_message object for message input
-
 >> inputs:
 
->>  ↰ name
+>>  ↰ plugin name
 
 >>  ↰ IRC_message object
 
@@ -204,11 +202,9 @@
 
 >- check_all
 
-	temp_responses = pluginmgr.check_all(ircmessage, ["apels"], [])
-
->> this function uses the IRC_message object for message input
-
 >> regex check function that returns responses for loaded plugins
+
+	temp_responses = pluginmgr.check_all(ircmessage, ["apels"], [])
 
 >> inputs:
 
