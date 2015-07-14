@@ -56,12 +56,14 @@ puts "Done"
 
 # main loop
 until bot.socket.eof? do
-	msg = bot.read
+	ircmsg = bot.read
+	msg = bot.parse(ircmsg)
 
-	if msg == "PING" # PING and PONG are handled by the reading of the socket
+	# PING and PONG are handled by the reading of the socket
+	# prevents the bot from responding to itself or recording itself into the backlog
+	if ircmsg == "PING" or bot.nick == msg.nick
 		next
 	else
-		msg = bot.parse(msg)
 		backlog.push(msg)
 
 		if msg.message_regex(/^hello/) then bot.privmsg(msg.channel, "hello #{msg.nick}"); next; end
