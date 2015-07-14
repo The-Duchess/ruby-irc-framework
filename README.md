@@ -8,7 +8,7 @@
 
 > Copying:
 
-> see COPYING.md
+> see [COPYING.md](https://github.com/The-Duchess/ruby-irc-framework/blob/master/COPYING.md)
 
 # To Use
 
