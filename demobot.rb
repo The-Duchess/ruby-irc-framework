@@ -10,9 +10,11 @@ load 'rirc.rb'
 # setup
 network = "irc.freenode.net"
 port = 6667
+pass = ""
 nick = "rircbot"
 username = "rircbot"
 realname = "rircbot"
+nickserv_pass = ""
 channels = ["#YOURCHANNEL"]
 admins = ["YOURNICK"]
 backlog = []
@@ -32,22 +34,30 @@ puts "Connecting"
 puts "	↪ network = #{bot.network}"
 puts "	↪ port = #{bot.port}"
 
+# bot.connect_ssl
+# bot.connect_pass(pass)
 
 # send connect info
-bot.auth
-puts "Auth"
+# nickserv_pass can be empty
+bot.auth(nickserv_pass)
+puts "Authenticating"
 puts "	↪ nick = #{bot.nick_name}"
+puts "	↪ username = #{bot.user_name}"
+puts "	↪ realname = #{bot.real_name}"
+puts "	↪ identifying with #{nickserv_pass}"
 
 # joining channels
-channels.each { |a| bot.join(a) }
+puts "Joining"
+channels.each { |a| bot.join(a); puts "	↪ #{a}"; }
 
 # setting admins
-admins.each { |a| bot.add_admin(a) }
+puts "Adding admins"
+admins.each { |a| bot.add_admin(a); puts "	↪ #{a}"; }
 
 # loading plugins
 puts "Loading plugins"
 plugins_list.each do |a|
-	print "loading #{a}..."
+	print "	↪ loading #{a}... "
 	STDOUT.flush
 	puts plug.plugin_load(a)
 end

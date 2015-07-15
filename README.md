@@ -122,9 +122,9 @@
 
 	ircbot.names("#chat")
 
->- auth sets user, real name and nick and if there is a nickserv pass then it identifies
+>- auth sets user, real name and nick and if the nickserv_pass passed to auth is not empty or nil then it identifies to nickserv with nickserv_pass
 
-	ircbot.auth
+	ircbot.auth(nickserv_pass)
 
 >- read reads a line from the socket and PONGs if it sees a PING else it will return the message line
 
