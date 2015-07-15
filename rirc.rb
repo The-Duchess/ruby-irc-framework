@@ -403,12 +403,16 @@ class IRCBot
 		say "NAMES #{dest}"
 	end
 
+	def identify(nickserv_pass)
+		say "PRIVMSG nickserv :#{nickserv_pass}"
+	end
+
 	def auth(nickserv_pass)
 		say "VERSION"
 		say "USER #{@user_name} * * :#{@real_name}"
 		nick(@nick)
 		if nickserv_pass != "" and nickserv_pass != nil
-			say "PRIVMSG nickserv :#{nickserv_pass}"
+			identify(nickserv_pass)
 		end
 	end
 
