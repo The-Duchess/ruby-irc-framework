@@ -34,7 +34,7 @@ puts "done"
 
 # initial connect
 bot.connect
-puts "Connecting"
+puts "Connected to"
 puts "	↪ network = #{bot.network}"
 puts "	↪ port = #{bot.port}"
 
@@ -44,7 +44,7 @@ puts "	↪ port = #{bot.port}"
 # send connect info
 # nickserv_pass can be empty
 bot.auth(nickserv_pass)
-puts "Authenticating"
+puts "Authenticated with"
 puts "	↪ nick = #{bot.nick_name}"
 puts "	↪ username = #{bot.user_name}"
 puts "	↪ realname = #{bot.real_name}"
