@@ -122,6 +122,10 @@
 
 	ircbot.names("#chat")
 
+>- identify takes a nickserv pass and identifies to nickserv with it
+
+	ircbot.identify(nickserv_pass)
+
 >- auth sets user, real name and nick and if the nickserv_pass passed to auth is not empty or nil then it identifies to nickserv with nickserv_pass
 
 	ircbot.auth(nickserv_pass)
