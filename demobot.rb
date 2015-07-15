@@ -71,7 +71,7 @@ until bot.socket.eof? do
 
 	# PING and PONG are handled by the reading of the socket
 	# prevents the bot from responding to itself or recording itself into the backlog
-	if ircmsg == "PING" or bot.nick == msg.nick
+	if ircmsg == "PING" or bot.nick_name == msg.nick
 		next
 	else
 		backlog.push(msg)
