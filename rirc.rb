@@ -364,6 +364,7 @@ class IRCBot
 
 	def nick(nick)
 
+		@nick = nick
 		say "NICK #{nick}"
 	end
 
