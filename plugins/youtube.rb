@@ -68,7 +68,7 @@ class Youtube < Pluginf
 		# return "PRIVMSG #{message.chan} :hello"
 		# or you can use functions to simplify this
 		# some are provided below
-		return privmsg(message.chan, response)
+		return privmsg(message.channel, response)
 	end
 
 	def privmsg(dest, message)
