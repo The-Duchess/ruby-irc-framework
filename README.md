@@ -163,7 +163,7 @@
 
 >- [Cat](https://github.com/The-Duchess/ruby-irc-framework/blob/master/plugins/cat.rb)
 
-> Provided fuctions
+> Provided Functions
 
 - plugins returns the array of Plugin objects
 
