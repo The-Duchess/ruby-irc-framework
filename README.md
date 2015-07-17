@@ -161,6 +161,8 @@
 
 >- [YouTube](https://github.com/The-Duchess/ruby-irc-framework/blob/master/plugins/youtube.rb)
 
+>> NOTE: YouTube will require some gems
+
 >- [Cat](https://github.com/The-Duchess/ruby-irc-framework/blob/master/plugins/cat.rb)
 
 > Provided Functions
