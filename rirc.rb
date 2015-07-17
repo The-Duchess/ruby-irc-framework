@@ -115,6 +115,71 @@ class Plugin_manager
 	end
 
 	# search functions
+	def get_names
+
+		if @plugins.length == 0
+			return []
+		end
+
+		names = []
+
+		@plugins.each { |a| names.push(a.name) }
+
+		return names
+	end
+
+	def get_helps
+
+		if @plugins.length == 0
+			return []
+		end
+
+		names = []
+
+		@plugins.each { |a| names.push(a.help) }
+
+		return names
+	end
+
+	def get_files
+
+		if @plugins.length == 0
+			return []
+		end
+
+		names = []
+
+		@plugins.each { |a| names.push(a.file_name) }
+
+		return name
+	end
+
+	def get_chans
+
+		if @plugins.length == 0
+			return []
+		end
+
+		names = []
+
+		@plugins.each { |a| names.push(a.chans) }
+
+		return name
+	end
+
+	def get_regexps
+
+		if @plugins.length == 0
+			return []
+		end
+
+		names = []
+
+		@plugins.each { |a| names.push(a.regex) }
+
+		return name
+	end
+
 	def get_plugin(name) # gets a plugin by name or nil if it is not loaded
 
 		if @plugins.length == 0
@@ -178,7 +243,7 @@ class Plugin_manager
 		end
 
 		@plugins.each do |a|
-			if a.name == name 
+			if a.name == name
 				return true
 			end
 		end
@@ -224,6 +289,8 @@ class Plugin_manager
 		end
 
 		response = []
+
+		# this is incredibly inneficient but it makes check_plugin flexible
 		@plugins.each { |a| response.push(check_plugin(a.name, message, admins, backlog)) }
 
 		return response

@@ -146,10 +146,6 @@ until bot.socket.eof? do
 
 		responses = plug.check_all(msg, admins, backlog)
 
-		responses.each do |a|
-			if a != ""
-				bot.say(a)
-			end
-		end
+		responses.each { |a| if a != "" then bot.say(a) end }
 	end
 end

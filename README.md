@@ -167,9 +167,31 @@
 
 > Provided Functions
 
-- plugins returns the array of Plugin objects
+> fetching functions
+
+- plugins returns the array of currently loaded plugins
 
 		new_plugin_list = pluginmgr.plugins
+
+- get_names gets an array of strings of the names of all loaded plugins
+
+		plugin_names = pluginmgr.get_names
+
+- get_helps gets an array of strings of the help of all loaded plugins
+
+		plugin_helps = pluginmgr.get_helps
+
+- get_files gets an array of plugin file names of all loaded plugins
+
+		plugin_file_names = pluginmgr.get_files
+
+- get_chans gets an array of plugin channels (array) of all loaded plugins
+
+		plugin_chans = pluginmgr.get_chans
+
+- get_regexps gets an array of plugin regexes of all loaded plugins
+
+		plugin_regexps = pluginmgr.get_regexps
 
 > search functions
 
@@ -208,7 +230,7 @@
 
 >  ↰ plugin name
 
->  ↰ IRC_message object
+>  ↰ IRC_message object [to check against the plugin's regex and use in used plugins]
 
 >  ↰ array of admins [can be an empty array]
 
@@ -216,7 +238,7 @@
 
 > output:
 
->  ↳ string
+>  ↳ string to be sent to the socket (i.e "PRIVMSG #chat :hi")
 
 - check_all
 
@@ -224,7 +246,7 @@
 
 > inputs:
 
->  ↰ IRC_message object
+>  ↰ IRC_message object [to check against the plugin's regex and use in used plugins]
 
 >  ↰ array of admins [can be an empty array]
 
@@ -232,7 +254,7 @@
 
 > output:
 
->  ↳ array of strings
+>  ↳ array of strings returned from check_plugin
 
 > plugin loading, unloading and reloading
 
