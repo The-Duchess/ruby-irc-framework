@@ -153,6 +153,12 @@
 
 > The plugin template will tell you what parts are neccessary for creating a plugin.
 
+> Two functional plugins are provided
+
+>- [YouTube](https://github.com/The-Duchess/ruby-irc-framework/blob/master/plugins/youtube.rb)
+
+>- [Cat](https://github.com/The-Duchess/ruby-irc-framework/blob/master/plugins/cat.rb)
+
 > Provided fuctions
 
 >- plugins returns the array of Plugin objects
@@ -220,7 +226,7 @@
 
 >>  ↰ backlog array of IRC_message objects [can be an empty array]
 
->> output: 
+>> output:
 
 >>  ↳ array of strings
 
