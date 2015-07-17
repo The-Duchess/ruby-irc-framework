@@ -107,64 +107,35 @@ class Plugin_manager
 	# returns all the plugins
 	def plugins
 
-		if @plugins.length == 0
-			return []
-		end
-
 		return @plugins
 	end
 
 	# search functions
 	def get_plugin(name) # gets a plugin by name or nil if it is not loaded
-
-		if @plugins.length == 0
-			return nil
-		end
-
 		@plugins.each { |a| if a.name == name then return a end }
 
 		return nil
 	end
 
 	def plugin_help(name) # gets the help for a plugin
-
-		if @plugins.length == 0
-			return nil
-		end
-
 		@plugins.each { |a| if a.name == name then return a.help end }
 
 		return nil
 	end
 
 	def plugin_file_name(name) # gets the file name for a plugin
-
-		if @plugins.length == 0
-			return nil
-		end
-
 		@plugins.each { |a| if a.name == name then return a.file_name end }
 
 		return nil
 	end
 
 	def plugin_chans(name) # gets the array of channels for a plugin
-
-		if @plugins.length == 0
-			return nil
-		end
-
 		@plugins.each { |a| if a.name == name then return a.chans end }
 
 		return nil
 	end
 
 	def plugin_regex(name) # gets the regex for a plugin
-
-		if @plugins.length == 0
-			return nil
-		end
-
 		@plugins.each { |a| if a.name == name then return a.regex end }
 
 		return nil
@@ -172,16 +143,7 @@ class Plugin_manager
 
 	# check if a plugin is loaded
 	def plugin_loaded(name)
-
-		if @plugins.length == 0
-			return false
-		end
-
-		@plugins.each do |a|
-			if a.name == name 
-				return true
-			end
-		end
+		@plugins.each { |a| if a.name == name then return true end }
 
 		return false
 	end
@@ -195,11 +157,6 @@ class Plugin_manager
 	# 	- backlog array [can be an empty array]
 	# output: string
  	def check_plugin(name, message, admins, backlog) #checks an individual plugin's (by name) regex against message
-
- 		if @plugins.length == 0
-			return ""
-		end
-
 		if !plugin_loaded(name)
 			return ""
 		else
@@ -218,11 +175,6 @@ class Plugin_manager
 	# 	- backlog array [can be an empty array]
 	# output: array of strings
 	def check_all(message, admins, backlog)
-
-		if @plugins.length == 0
-			return []
-		end
-
 		response = []
 		@plugins.each { |a| response.push(check_plugin(a.name, message, admins, backlog)) }
 
@@ -230,7 +182,7 @@ class Plugin_manager
 	end
 
 	# load
-	def plugin_load(name)
+	def load(name)
 
 		if plugin_loaded(name)
 			return "plugin is already loaded"
@@ -271,8 +223,6 @@ class Plugin_manager
 
 		get_plugin(name).cleanup
 		@plugins.delete_if { |a| a.name == name }
-
-		"plugin #{name} unloaded"
 	end
 
 	# reload
@@ -282,12 +232,11 @@ class Plugin_manager
 			return "plugin is not loaded"
 		end
 
+		temp_name = name
 		temp_file_name = get_plugin(name).file_name
 
-		unload(name)
-		plugin_load(temp_file_name)
-
-		return "plugin #{name} reloaded"
+		unload(temp_name)
+		load(temp_file_name)
 	end
 end
 
@@ -313,7 +262,7 @@ class IRCBot
 		return @port
 	end
 
-	def nick_name
+	def nick
 
 		return @nick
 	end
@@ -364,7 +313,6 @@ class IRCBot
 
 	def nick(nick)
 
-		@nick = nick
 		say "NICK #{nick}"
 	end
 
@@ -403,16 +351,12 @@ class IRCBot
 		say "NAMES #{dest}"
 	end
 
-	def identify(nickserv_pass)
-		say "PRIVMSG nickserv :#{nickserv_pass}"
-	end
-
-	def auth(nickserv_pass)
+	def auth
 		say "VERSION"
 		say "USER #{@user_name} * * :#{@real_name}"
 		nick(@nick)
-		if nickserv_pass != "" and nickserv_pass != nil
-			identify(nickserv_pass)
+		if @nickserv_pass != ""
+			say "PRIVMSG nickserv :#{@nickserv_pass}"
 		end
 	end
 

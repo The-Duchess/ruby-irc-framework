@@ -9,7 +9,7 @@
 load 'rirc.rb'
 
 class Template < Pluginf
-	
+
 	# any functions you may need can be included here
 
 	# your definition for function called if the regex for the plugin matches the message.message
@@ -26,11 +26,11 @@ class Template < Pluginf
 		# some are provided below
 		return privmsg(message.chan, "hello")
 	end
-	
+
 	def privmsg(dest, message)
 		return "PRIVMSG #{dest} :#{message}"
 	end
-	
+
 	def action(dest, message)
 		return "PRIVMSG #{dest} :\01ACTION\07\01 #{message}"
 	end
