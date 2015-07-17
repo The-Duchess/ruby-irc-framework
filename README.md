@@ -50,12 +50,12 @@
 
 - check_regex takes a type (command, nick, channel, message) and regex and returns true if the part of the message matches the regex
 
-	# :[nick]!~username@client [command] [channel] :[message]
+	\# :[nick]!~username@client [command] [channel] :[message]
 	ircmsg.check_regex("command", /^PRIVMSG$/)
 
 - message_regex which just checks the message against a regex and returns true if the message matches the regex
 
-	# :[nick]!~username@client [command] [channel] :[message]
+	\# :[nick]!~username@client [command] [channel] :[message]
 	ircmsg.message_regex(/^!join /)
 
 **→ IRCBot**
