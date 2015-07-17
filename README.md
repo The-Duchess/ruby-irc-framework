@@ -202,35 +202,35 @@
 		temp_response = pluginmgr.check_plugin("name", ircmessage, ["apels"], [])
 
 
->> inputs:
+> inputs:
 
->>  ↰ plugin name
+>  ↰ plugin name
 
->>  ↰ IRC_message object
+>  ↰ IRC_message object
 
->>  ↰ array of admins [can be an empty array]
+>  ↰ array of admins [can be an empty array]
 
->>  ↰ backlog array of IRC_message objects [can be an empty array]
+>  ↰ backlog array of IRC_message objects [can be an empty array]
 
->> output:
+> output:
 
->>  ↳ string
+>  ↳ string
 
 - check_all
 
 		temp_responses = pluginmgr.check_all(ircmessage, ["apels"], [])
 
->> inputs:
+> inputs:
 
->>  ↰ IRC_message object
+>  ↰ IRC_message object
 
->>  ↰ array of admins [can be an empty array]
+>  ↰ array of admins [can be an empty array]
 
->>  ↰ backlog array of IRC_message objects [can be an empty array]
+>  ↰ backlog array of IRC_message objects [can be an empty array]
 
->> output:
+> output:
 
->>  ↳ array of strings
+>  ↳ array of strings
 
 > plugin loading, unloading and reloading
 
