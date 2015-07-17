@@ -18,7 +18,7 @@ nickserv_pass = ""
 channels = ["#YOURCHANNEL"]
 admins = ["YOURNICK"]
 backlog = []
-plugins_list = ["cat.rb", "youtube.rb"]
+plugins_list = ["cat.rb"]
 
 # create the bot
 print "creating bot... "
