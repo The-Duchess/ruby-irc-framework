@@ -151,7 +151,7 @@ class Plugin_manager
 
 		@plugins.each { |a| names.push(a.file_name) }
 
-		return name
+		return names
 	end
 
 	def get_chans
@@ -164,7 +164,7 @@ class Plugin_manager
 
 		@plugins.each { |a| names.push(a.chans) }
 
-		return name
+		return names
 	end
 
 	def get_regexps
@@ -177,7 +177,7 @@ class Plugin_manager
 
 		@plugins.each { |a| names.push(a.regex) }
 
-		return name
+		return names
 	end
 
 	def get_plugin(name) # gets a plugin by name or nil if it is not loaded
