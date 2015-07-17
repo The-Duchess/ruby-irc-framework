@@ -6,6 +6,14 @@
 # note: example code does not actually run
 # a running example should be posted soon
 
+require 'socket'
+require 'google/api_client'
+require 'json'
+require 'uri'
+require 'net/http'
+require 'multi_json'
+require 'date'
+
 load 'rirc.rb'
 
 class Youtube < Pluginf
