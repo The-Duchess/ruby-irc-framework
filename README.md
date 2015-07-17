@@ -236,8 +236,8 @@
 
 - plugin_load loads a plugin by file name (with or without the .rb extension) in the plugin folder
 
-		pluginmgr.load("name.rb")
-		pluginmgr.load("name")
+		pluginmgr.plugin_load("name.rb")
+		pluginmgr.plugin_load("name")
 
 - unload unloads a plugin by name
 
