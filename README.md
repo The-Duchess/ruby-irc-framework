@@ -32,6 +32,9 @@
 
 > the functioning bot also supports use of an example [plugin](https://github.com/The-Duchess/ruby-irc-framework/blob/master/plugins/cat.rb)
 
+> a full IRC bot [project](https://github.com/The-Duchess/husk) exists using this framework
+>> it is currently under construction
+
 # Classes Provided
 
 **→ IRC_Message**
