@@ -269,7 +269,11 @@ class Plugin_manager
 			return ""
 		else
 			if message.message.match(get_plugin(name).regex) and (get_plugin(name).chans.include? "any" or get_plugin(name).chans.include? message.channel)
-				return get_plugin(name).script(message, admins, backlog) # plugins use the IRC_message object
+				begin
+					return get_plugin(name).script(message, admins, backlog) # plugins use the IRC_message object
+				rescue => e
+					return "an error occured for plugin: #{name}"
+				end
 			end
 		end
 
