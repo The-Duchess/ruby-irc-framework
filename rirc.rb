@@ -339,7 +339,7 @@ class Plugin_manager
 		get_plugin(name).cleanup
 		@plugins.delete_if { |a| a.name == name }
 
-		"plugin #{name} unloaded"
+		return "plugin #{name} unloaded"
 	end
 
 	# reload
@@ -368,6 +368,11 @@ class IRCBot
 		@socket = nil
 		@channels = []
 		@admins = []
+		@ignore = []
+	end
+
+	def ignore
+		return @ignore
 	end
 
 	def channels
@@ -511,14 +516,16 @@ class IRCBot
 
 	def parse(msg)
 		message_reg = msg.match(/^(:(?<prefix>\S+) )?(?<command>\S+)( (?!:)(?<params>.+?))?( :(?<trail>.+))?$/)
-		nick = message_reg[:prefix].to_s.split("!")[0]
+		nick_n = message_reg[:prefix].to_s.split("!")[0]
 		command = message_reg[:command].to_s
 		chan = message_reg[:params].to_s
 		message = message_reg[:trail].to_s
 
 		message = message.chomp
 
-		ircmsg = IRC_message.new(command, nick, chan, message)
+		if chan == @nick then chan = nick_n
+
+		ircmsg = IRC_message.new(command, nick_n, chan, message)
 
 		return ircmsg
 	end
@@ -531,5 +538,15 @@ class IRCBot
 	def remove_admin(nick)
 
 		@admins.delete_if { |a| a == nick }
+	end
+
+	def add_ignore(nick)
+
+		@ignore.push(nick)
+	end
+
+	def remove_ignore(nick)
+
+		@ignore.delete_if { |a| a == nick }
 	end
 end
