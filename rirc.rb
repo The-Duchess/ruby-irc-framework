@@ -523,7 +523,7 @@ class IRCBot
 
 		message = message.chomp
 
-		if chan == @nick then chan = nick_n
+		if chan == @nick then chan = nick_n end
 
 		ircmsg = IRC_message.new(command, nick_n, chan, message)
 
@@ -531,22 +531,18 @@ class IRCBot
 	end
 
 	def add_admin(nick)
-
 		@admins.push(nick)
 	end
 
 	def remove_admin(nick)
-
 		@admins.delete_if { |a| a == nick }
 	end
 
 	def add_ignore(nick)
-
 		@ignore.push(nick)
 	end
 
 	def remove_ignore(nick)
-
 		@ignore.delete_if { |a| a == nick }
 	end
 end
