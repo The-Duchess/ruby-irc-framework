@@ -370,6 +370,14 @@ class IRCBot
 		@admins = []
 	end
 
+	def channels
+		return @channels
+	end
+
+	def admins
+		return @admins
+	end
+
 	def network
 
 		return @network
@@ -406,6 +414,8 @@ class IRCBot
 	end
 
 	def join(channel)
+
+		if @channels.include? channel then return end
 
 		say "JOIN #{channel}"
 		@channels.push(channel)
