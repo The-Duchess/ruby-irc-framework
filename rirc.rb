@@ -490,7 +490,7 @@ class IRCBot
 	end
 
 	def identify(nickserv_pass)
-		say "PRIVMSG nickserv :#{nickserv_pass}"
+		say "PRIVMSG nickserv :identify #{nickserv_pass}"
 	end
 
 	def auth(nickserv_pass)
