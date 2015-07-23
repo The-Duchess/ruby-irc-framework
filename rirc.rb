@@ -303,16 +303,16 @@ class Plugin_manager
 	# load
 	def plugin_load(name)
 
-		if plugin_loaded(name)
-			return "plugin is already loaded"
-		end
-
 		$LOAD_PATH << "#{@plugin_folder}"
 		response = ""
 		$temp_plugin = nil # allows a global to be set, thus allowing the plugin to create a temporary we can add
 		if name.match(/.rb$/)
 			begin
 				load "#{name}"
+				if plugin_load($temp_plugin.name)
+					$temp_plugin = nil
+					return "Plugin #{name} is already loaded"
+				end
 				@plugins.push($temp_plugin)
 				$temp_plugin = nil
 				response = "#{name[0..-4]} loaded"
@@ -322,6 +322,10 @@ class Plugin_manager
 		else
 			begin
 				load "#{name}.rb"
+				if plugin_load($temp_plugin.name)
+					$temp_plugin = nil
+					return "Plugin #{name} is already loaded"
+				end
 				@plugins.push($temp_plugin)
 				$temp_plugin = nil
 				response = "#{name} loaded"
