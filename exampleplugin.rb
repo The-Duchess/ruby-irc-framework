@@ -24,7 +24,7 @@ class Template < Pluginf
 		# return "PRIVMSG #{message.chan} :hello"
 		# or you can use functions to simplify this
 		# some are provided below
-		return privmsg(message.chan, "hello")
+		return privmsg(message.channel, "hello")
 	end
 
 	def privmsg(dest, message)
