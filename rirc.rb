@@ -424,10 +424,8 @@ class IRCBot
 
 	def join(channel)
 
-		if @channels.include? channel then return end
-
 		say "JOIN #{channel}"
-		@channels.push(channel)
+		if !@channels.include? channel then @channels.push(channel) end
 	end
 
 	def connect
