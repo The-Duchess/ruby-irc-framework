@@ -309,7 +309,7 @@ class Plugin_manager
 		if name.match(/.rb$/)
 			begin
 				load "#{name}"
-				if plugin_load($temp_plugin.name)
+				if plugin_loaded($temp_plugin.name)
 					$temp_plugin = nil
 					return "Plugin #{name} is already loaded"
 				end
@@ -322,7 +322,7 @@ class Plugin_manager
 		else
 			begin
 				load "#{name}.rb"
-				if plugin_load($temp_plugin.name)
+				if plugin_loaded($temp_plugin.name)
 					$temp_plugin = nil
 					return "Plugin #{name} is already loaded"
 				end
