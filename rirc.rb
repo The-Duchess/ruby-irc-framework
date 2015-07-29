@@ -382,7 +382,6 @@ class IRCBot
 	end
 
 	def backlog
-
 		return @backlog
 	end
 
@@ -566,12 +565,10 @@ class IRCBot
 	end
 
 	def set_admins(admins_s)
-		puts "Adding admins"
 	      admins_.each { |a| self.add_admin(a); puts "	↪ #{a}"; }
 	end
 
 	def join_channels(channels_s)
-		puts "Joining"
 		channels_s.each { |a| self.join(a); puts "	↪ #{a}"; }
 	end
 
@@ -611,15 +608,14 @@ class IRCBot
 	      	ircmsg = self.read
 			msg = self.parse(ircmsg)
 
-			hooks = @hooks['message']
+			if self.ignore.include? msg.nick then next end
 
-			hooks.each do |h|
-				h.call(msg)
-			end
+			hooks = @hooks['message']
+			hooks.each { |h| h.call(msg) }
 	      end
 	end
 
 	def stop
-		
+
 	end
 end
