@@ -1,5 +1,5 @@
 # **Ruby IRC Framework**
-**Version 0.2.3**
+**Version 0.3.1**
 
 > The rirc [Framework](https://github.com/The-Duchess/ruby-irc-framework/blob/master/rirc.rb)
 
@@ -44,7 +44,7 @@
 	msg = ircbot.read
 	ircmsg = ircbot.parse(msg)
 	# or
-	ircmsg = IRC_message.new(command, nick, channel, message)
+	ircmsg = IRC_message.new(command, nick, channel, message, ircmsg)
 
 >Provides a structure to store irc messages in a parsed form
 
@@ -52,7 +52,7 @@
 
 > :[nick]!~username@client [command] [channel] :[message]
 
-- command, nick, channel, message to grab these elements of a message
+- command, nick, channel, message to grab these elements of a message as well ircmsg to get the original message
 
 - check_regex takes a type (command, nick, channel, message) and regex and returns true if the part of the message matches the regex
 
@@ -75,6 +75,20 @@
 >Provides a basic core irc bot
 
 >Provides a number of functions for operation
+
+- start which takes connection information for authentication and channels to join and starts running the bot
+
+		ircbot.start(use_ssl, use_server_pass, server_pass, nickserv_pass, channels)
+
+- on which allows you to register code to be run when the bot receives a message with the :message type. registered blocks are only used if you use ircbot.start(...) to run the bot
+
+```ruby
+		ircbot.on :message do |msg|
+			if msg.message_regex(/^#{ircbot.nick_name}[:,] (h|H)ello/)
+				ircbot.privmsg(msg.channel, "Hi: #{msg.nick}")
+			end
+		end
+```
 
 - network, port, nick_name, user_name, real_name and socket all return these respective values
 
@@ -150,6 +164,11 @@
 
 		ircbot.add_admin("apels")
 		ircbot.remove_admin("apels")
+
+- set_admins and join_channels which take arrays of admins and channels respectively and add and join respectively
+
+		ircbot.set_admins(["apels"])
+		ircbot.join_channels(["#chat"])
 
 **→ Plugin_manager**
 

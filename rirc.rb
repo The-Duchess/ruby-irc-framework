@@ -606,6 +606,10 @@ class IRCBot
 	      	end
 		end
 
+		self.on :message do |msg|
+			if self.admins.include? msg.nick and msg.message_regex(/^`plsgo$/) then abort end
+		end
+
 	      until self.socket.eof? do
 	      	ircmsg = self.read
 			msg = self.parse(ircmsg)
