@@ -565,7 +565,7 @@ class IRCBot
 	end
 
 	def set_admins(admins_s)
-	      admins_.each { |a| self.add_admin(a); puts "	↪ #{a}"; }
+	      admins_s.each { |a| self.add_admin(a); puts "	↪ #{a}"; }
 	end
 
 	def join_channels(channels_s)
