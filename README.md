@@ -80,7 +80,7 @@
 
 		ircbot.start(use_ssl, use_server_pass, server_pass, nickserv_pass, channels)
 
-- on which allows you to register code to be run when the bot receives a message with the :message type. registered blocks are only used if you use ircbot.start(...) to run the bot
+- on which allows you to register code to be run over and IRC_message object when the bot receives a message with the :message type. registered blocks are only used if you use ircbot.start(...) to run the bot
 
 ```ruby
 		ircbot.on :message do |msg|
