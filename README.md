@@ -93,13 +93,13 @@
 
 - on which allows you to register code to be run over and IRC_message object when the bot receives a message with the :message type. registered blocks are only used if you use ircbot.start(...) to run the bot
 
-```ruby
+	```ruby
 		ircbot.on :message do |msg|
 			if msg.message_regex(/^#{ircbot.nick_name}[:,] (h|H)ello/)
 				ircbot.privmsg(msg.channel, "Hi: #{msg.nick}")
 			end
 		end
-```
+	```
 
 - network, port, nick_name, user_name, real_name, backlog and socket all return these respective values
 > the backlog is updated automatically for you if using the following to run the bot
