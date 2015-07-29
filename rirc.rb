@@ -573,13 +573,8 @@ class IRCBot
 	end
 
 	def create_log
-		if not File.exist?("./log")
-			print "Creating Command and Privmsg Log File... "
-			STDOUT.flush
+		if !File.exist?("./log")
 			File.open("./log", "w+") { |fw| fw.write("Command and Privmsg LOGS") }
-			puts "done"
-		else
-			puts "Command and Privmsg Log File Exists"
 		end
 	end
 
