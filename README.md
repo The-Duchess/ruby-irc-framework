@@ -101,7 +101,10 @@
 		end
 ```
 
-- network, port, nick_name, user_name, real_name and socket all return these respective values
+- network, port, nick_name, user_name, real_name, backlog and socket all return these respective values
+> the backlog is updated automatically for you if using the following to run the bot
+
+		ircbot.start!
 
 - say which takes a message and prints it to the socket
 
