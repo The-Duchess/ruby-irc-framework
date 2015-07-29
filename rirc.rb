@@ -10,11 +10,16 @@ require 'socket'
 require 'openssl'
 
 class IRC_message
-	def initialize(command, nick, channel, message)
+	def initialize(command, nick, channel, message, ircmsg)
 		@command = command
 		@nick = nick
 		@channel = channel
 		@message = message
+		@ircmsg = ircmsg
+	end
+
+	def ircmsg
+		return @ircmsg
 	end
 
 	def message
@@ -537,7 +542,7 @@ class IRCBot
 
 		if chan == @nick then chan = nick_n end
 
-		ircmsg = IRC_message.new(command, nick_n, chan, message)
+		ircmsg = IRC_message.new(command, nick_n, chan, message, msg)
 
 		return ircmsg
 	end
@@ -593,7 +598,7 @@ class IRCBot
 		self.on :message do |msg|
 
 			if msg.channel == msg.nick
-	                  File.write("./log", ircmsg, File.size("./log"), mode: 'a')
+	                  File.write("./log", msg.ircmsg, File.size("./log"), mode: 'a')
 	            end
 
 	      	if !self.nick_name == msg.nick and !self.ignore.include? msg.nick
