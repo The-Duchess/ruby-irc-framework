@@ -559,17 +559,17 @@ class IRCBot
 	end
 
 	def on(type, &block)
-	#	type = type.to_s
-	#	@hooks[type] ||= []
-	#	@hooks[type] << block
+		type = type.to_s
+		@hooks[type] ||= []
+		@hooks[type] << block
 	end
 
 	def set_admins(admins_s)
-	      admins_s.each { |a| self.add_admin(a); puts "	↪ #{a}"; }
+	      admins_s.each { |a| self.add_admin(a) }
 	end
 
 	def join_channels(channels_s)
-		channels_s.each { |a| self.join(a); puts "	↪ #{a}"; }
+		channels_s.each { |a| self.join(a) }
 	end
 
 	def create_log
