@@ -22,6 +22,7 @@ bot = IRCBot.new(network, port, nick, username, realname)
 plug = Plugin_manager.new("./plugins")
 plugins_list.each { |a| plug.plugin_load(a) }
 bot.set_admins(admins)
+bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 
 bot.on :message do |msg|
       case msg.message
@@ -36,4 +37,4 @@ bot.on :message do |msg|
       end
 end
 
-bot.start(use_ssl, use_pass, pass, nickserv_pass, channels)
+bot.start!

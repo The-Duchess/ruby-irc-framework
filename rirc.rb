@@ -583,32 +583,33 @@ class IRCBot
 		end
 	end
 
-	def start(use_ssl, use_pass, pass, nickserv_pass, channels_s)
-
+	def setup(use_ssl, use_pass, pass, nickserv_pass, channels_s)
 		self.connect
-	      if use_ssl then self.connect_ssl end
-	      if use_pass then self.connect_pass(pass) end
+		if use_ssl then self.connect_ssl end
+		if use_pass then self.connect_pass(pass) end
 		self.auth(nickserv_pass)
 
 		self.create_log
 
 		self.join_channels(channels_s)
 
-		# add logging and backlog
 		self.on :message do |msg|
 
 			if msg.channel == msg.nick
-	                  File.write("./log", msg.ircmsg, File.size("./log"), mode: 'a')
-	            end
+				File.write("./log", msg.ircmsg, File.size("./log"), mode: 'a')
+			end
 
-	      	if !self.nick_name == msg.nick and !self.ignore.include? msg.nick
+			if !self.nick_name == msg.nick and !self.ignore.include? msg.nick
 				@backlog.push(msg)
-	      	end
+			end
 		end
 
 		self.on :message do |msg|
 			if self.admins.include? msg.nick and msg.message_regex(/^`plsgo$/) then abort end
 		end
+	end
+
+	def start!
 
 	      until self.socket.eof? do
 	      	ircmsg = self.read

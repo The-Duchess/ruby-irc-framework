@@ -30,6 +30,8 @@
 
 > a [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot.rb) is provided
 
+> a second [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot.rb) with easier setup is provided
+
 > the functioning bot also supports use of an example [plugin](https://github.com/The-Duchess/ruby-irc-framework/blob/master/plugins/cat.rb)
 
 > a full IRC bot [project](https://github.com/The-Duchess/husk) exists using this framework
@@ -76,9 +78,18 @@
 
 >Provides a number of functions for operation
 
-- start which takes connection information for authentication and channels to join and starts running the bot
+- setup which takes the following arguments and connects and joins channels
+>- bool to use ssl
+>- bool to use a server pass
+>- the server pass (can be "" if you do not want to use it)
+>- the nickserv pass (can be "" if you do not want to use it)
+>- an array of channels to join
 
-		ircbot.start(use_ssl, use_server_pass, server_pass, nickserv_pass, channels)
+		ircbot.setup(use_ssl, use_server_pass, server_pass, nickserv_pass, channels)
+
+- start which starts the bot
+
+		ircbot.start!
 
 - on which allows you to register code to be run over and IRC_message object when the bot receives a message with the :message type. registered blocks are only used if you use ircbot.start(...) to run the bot
 
