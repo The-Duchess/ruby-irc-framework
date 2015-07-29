@@ -559,9 +559,9 @@ class IRCBot
 	end
 
 	def on(type, &block)
-		type = type.to_s
-		@hooks[type] ||= []
-		@hooks[type] << block
+	#	type = type.to_s
+	#	@hooks[type] ||= []
+	#	@hooks[type] << block
 	end
 
 	def set_admins(admins_s)
@@ -584,6 +584,7 @@ class IRCBot
 	end
 
 	def start(use_ssl, use_pass, pass, nickserv_pass, channels_s)
+
 		self.connect
 	      if use_ssl then self.connect_ssl end
 	      if use_pass then self.connect_pass(pass) end
@@ -593,6 +594,7 @@ class IRCBot
 
 		self.join_channels(channels_s)
 
+		# add logging and backlog
 		self.on :message do |msg|
 
 			if msg.channel == msg.nick
@@ -613,9 +615,5 @@ class IRCBot
 			hooks = @hooks['message']
 			hooks.each { |h| h.call(msg) }
 	      end
-	end
-
-	def stop
-
 	end
 end
