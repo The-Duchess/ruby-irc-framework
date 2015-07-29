@@ -382,6 +382,7 @@ class IRCBot
 	end
 
 	def backlog
+
 		return @backlog
 	end
 
@@ -601,8 +602,8 @@ class IRCBot
 	                  File.write("./log", ircmsg, File.size("./log"), mode: 'a')
 	            end
 
-	      	if ircmsg == "PING" or self.nick_name == msg.nick or self.ignore.include? msg.nick
-	      		next
+	      	if !ircmsg == "PING" and !self.nick_name == msg.nick and !self.ignore.include? msg.nick
+				@backlog.push(msg)
 	      	else
 		end
 
@@ -619,6 +620,6 @@ class IRCBot
 	end
 
 	def stop
-		abort
+		
 	end
 end
