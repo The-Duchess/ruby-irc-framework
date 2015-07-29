@@ -377,6 +377,12 @@ class IRCBot
 		@channels = []
 		@admins = []
 		@ignore = []
+		@hooks = {}
+		@backlog = []
+	end
+
+	def backlog
+		return @backlog
 	end
 
 	def ignore
@@ -550,5 +556,69 @@ class IRCBot
 
 	def remove_ignore(nick)
 		@ignore.delete_if { |a| a == nick }
+	end
+
+	def on(type, &block)
+		type = type.to_s
+		@hooks[type] ||= []
+		@hooks[type] << block
+	end
+
+	def set_admins(admins_s)
+		puts "Adding admins"
+	      admins_.each { |a| self.add_admin(a); puts "	↪ #{a}"; }
+	end
+
+	def join_channels(channels_s)
+		puts "Joining"
+		channels_s.each { |a| self.join(a); puts "	↪ #{a}"; }
+	end
+
+	def create_log
+		if not File.exist?("./log")
+			print "Creating Command and Privmsg Log File... "
+			STDOUT.flush
+			File.open("./log", "w+") { |fw| fw.write("Command and Privmsg LOGS") }
+			puts "done"
+		else
+			puts "Command and Privmsg Log File Exists"
+		end
+	end
+
+	def start(use_ssl, use_pass, pass, nickserv_pass, channels_s)
+		self.connect
+	      if use_ssl then self.connect_ssl end
+	      if use_pass then self.connect_pass(pass) end
+		self.auth(nickserv_pass)
+
+		self.create_log
+
+		self.join_channels(channels_s)
+
+		self.on :message do |msg|
+
+			if msg.channel == msg.nick
+	                  File.write("./log", ircmsg, File.size("./log"), mode: 'a')
+	            end
+
+	      	if ircmsg == "PING" or self.nick_name == msg.nick or self.ignore.include? msg.nick
+	      		next
+	      	else
+		end
+
+	      until self.socket.eof? do
+	      	ircmsg = self.read
+			msg = self.parse(ircmsg)
+
+			hooks = @hooks['message']
+
+			hooks.each do |h|
+				h.call(msg)
+			end
+	      end
+	end
+
+	def stop
+		abort
 	end
 end
