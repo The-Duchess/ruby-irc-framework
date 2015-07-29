@@ -596,16 +596,16 @@ class IRCBot
 	                  File.write("./log", ircmsg, File.size("./log"), mode: 'a')
 	            end
 
-	      	if !ircmsg == "PING" and !self.nick_name == msg.nick and !self.ignore.include? msg.nick
+	      	if !self.nick_name == msg.nick and !self.ignore.include? msg.nick
 				@backlog.push(msg)
-	      	else
+	      	end
 		end
 
 	      until self.socket.eof? do
 	      	ircmsg = self.read
 			msg = self.parse(ircmsg)
 
-			if self.ignore.include? msg.nick then next end
+			if ircmsg == "PING" or self.ignore.include?(msg.nick) then next end
 
 			hooks = @hooks['message']
 			hooks.each { |h| h.call(msg) }
