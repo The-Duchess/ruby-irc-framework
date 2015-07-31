@@ -35,4 +35,20 @@ bot.on :message do |msg|
       end
 end
 
+# because of the ability to add hooks you can add a hook to add hooks from commands given during run time
+#bot.on :message do |msg|
+#   if bot.admins.include? msg.nick and msg.message_regex(/`add cmd (\S+ )*/)
+#     param = msg.message.split(" ")[2..-1]
+#
+#     bot.on :message do |msg_t|
+#           # add command
+#          @command = param[0]
+#           if msg_t.message_regex(Regexp.new(@command)
+#                 # command based on param
+#           end
+#           
+#     end
+#   end
+#end
+
 bot.start!
