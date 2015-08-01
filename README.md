@@ -93,6 +93,7 @@
 
 - on which allows you to register code to be run over and IRC_message object when the bot receives a message with the :message type. registered blocks are only used if you use ircbot.start(...) to run the bot
 
+
 	```ruby
 		ircbot.on :message do |msg|
 			if msg.message_regex(/^#{ircbot.nick_name}[:,] (h|H)ello/)
@@ -107,25 +108,25 @@
 > the second [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot2.rb) has example code using all of them
 
 
-	```ruby
-		# lets the bot do something on a message with IRC_message object the argument
-		# useful for plugins
-		ircbot.on :message do |msg|
+		```ruby
+			# lets the bot do something on a message with IRC_message object the argument
+			# useful for plugins
+			ircbot.on :message do |msg|
 
-		end
+			end
 
-		# lets the bot do something on a message with channel and command as arguments
-		# lets the bot respond to commands
-		ircbot.on :command do |channel, command|
+			# lets the bot do something on a message with channel and command as arguments
+			# lets the bot respond to commands
+			ircbot.on :command do |channel, command|
 
-		end
+			end
 
-		# lets the bot do something on a message
-		# with the nick, command, channel, and message content as arguments
-		ircbot.on :ircmsg do |nick, command, channel, message|
+			# lets the bot do something on a message
+			# with the nick, command, channel, and message content as arguments
+			ircbot.on :ircmsg do |nick, command, channel, message|
 
-		end
-	```
+			end
+		```
 
 - network, port, nick_name, user_name, real_name, backlog and socket all return these respective values
 > the backlog is updated automatically for you if using the following to run the bot
