@@ -40,7 +40,7 @@ end
 # bot.on :command allows the bot to respond to commands that may affect it
 # the arguments you have are the channel and the command from the IRC_message
 bot.on :command do |chnl, cmd|
-      case |chnl|
+      case chnl
       when /(\S+) #{bot.nick_name}$/
             if cmd == 'KICK' and auto_rejoin then bot.join(chnl.split(" ")[0].to_s) end
       end
@@ -49,7 +49,7 @@ end
 # bot.on :ircmessage allows the bot to respond to a message but all the parts of the IRC_message
 # are given as arguments as opposed to through the IRC_message object for the bot.on :message
 bot.on :ircmsg do |nick_t, command_t, channel_t, message_t|
-      case |message_t|
+      case message_t
       when /^#{bot.nick_name}[,:] source\?$/ then
             bot.notice(nick_t, "https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot2.rb")
       end
