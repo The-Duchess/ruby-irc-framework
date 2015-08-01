@@ -13,24 +13,24 @@
 
 # To Use
 
-place rirc.rb in the same directory as your main ircbot file
+Place rirc.rb in the same directory as your main ircbot file
 
-	```ruby
-		require_relative 'rirc.rb'
+		```ruby
+			require_relative 'rirc.rb'
 
-		ircbot = IRCBot.new(network, port, nick, user_name, real_name)
-		bot.set_admins(admins)
-		bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
+			ircbot = IRCBot.new(network, port, nick, user_name, real_name)
+			bot.set_admins(admins)
+			bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 
-		bot.on :message do |msg|
-		      case msg.message
-		      when /^#{bot.nick_name}[,:] (h|H)ello/ then
-		            bot.privmsg(msg.channel, "hi: #{msg.nick}")
-		      end
-		end
+			bot.on :message do |msg|
+			      case msg.message
+			      when /^#{bot.nick_name}[,:] (h|H)ello/ then
+			            bot.privmsg(msg.channel, "hi: #{msg.nick}")
+			      end
+			end
 
-		bot.start!
-	```
+			bot.start!
+		```
 
 > an [example bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/examplebot.rb) is provided
 
