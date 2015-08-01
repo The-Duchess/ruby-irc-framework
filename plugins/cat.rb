@@ -6,7 +6,7 @@
 load 'rirc.rb'
 
 class Cat_print < Pluginf
-	
+
 	# any functions you may need can be included here
 
 	# your definition for function called if the regex for the plugin matches the message.message
@@ -23,11 +23,11 @@ class Cat_print < Pluginf
 		# some are provided below
 		return privmsg(message.channel, "~( ^^)")
 	end
-	
+
 	def privmsg(dest, message)
 		return "PRIVMSG #{dest} :#{message}"
 	end
-	
+
 	def action(dest, message)
 		return "PRIVMSG #{dest} :\01ACTION\07\01 #{message}"
 	end
@@ -51,4 +51,5 @@ pluginname = "cat" # name for plugin
 description = "`cat will print a cat" # description and or help
 
 # plugin = Class_name.new(regex, name, file_name, help)
-$temp_plugin = Cat_print.new(reg, pluginname, filename, description)
+temp = Cat_print.new(reg, pluginname, filename, description)
+return temp
