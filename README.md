@@ -93,8 +93,11 @@
 
 - on which allows you to register code to be run over various arguments when the bot receives a message
 > three types exist for the on command
+>- message
+>- command
+>- ircmsg
 
-> the second [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot2.rb) has example code using all of them
+>- the second [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot2.rb) has example code using all of them
 
 
 
