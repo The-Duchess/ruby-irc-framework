@@ -30,7 +30,7 @@
 
 > a [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot.rb) is provided
 
-> a second [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot.rb) with easier setup is provided
+> a second [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot2.rb) with easier setup is provided
 
 > the functioning bot also supports use of an example [plugin](https://github.com/The-Duchess/ruby-irc-framework/blob/master/plugins/cat.rb)
 
