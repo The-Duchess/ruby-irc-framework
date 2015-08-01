@@ -21,7 +21,6 @@ bot = IRCBot.new(network, port, nick, username, realname)
 plug = Plugin_manager.new("./plugins")
 plugins_list.each { |a| plug.plugin_load(a) }
 bot.set_admins(admins)
-bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 
 # bot.on :message does actions when the irc bot recieves a message
 # the argument you have is the IRC_message object
@@ -56,4 +55,5 @@ bot.on :ircmsg do |nick_t, command_t, channel_t, message_t|
       end
 end
 
+bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 bot.start!

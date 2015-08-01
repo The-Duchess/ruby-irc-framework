@@ -21,7 +21,6 @@ Place rirc.rb in the same directory as your main ircbot file
 
 			ircbot = IRCBot.new(network, port, nick, user_name, real_name)
 			bot.set_admins(admins)
-			bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 
 			bot.on :message do |msg|
 			      case msg.message
@@ -30,6 +29,7 @@ Place rirc.rb in the same directory as your main ircbot file
 			      end
 			end
 
+			bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 			bot.start!
 		```
 
