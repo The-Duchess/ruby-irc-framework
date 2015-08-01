@@ -91,7 +91,7 @@
 
 		ircbot.start!
 
-- on which allows you to register code to be run over and IRC_message object when the bot receives a message with the :message type. registered blocks are only used if you use ircbot.start(...) to run the bot
+- on which allows you to register code to be run over various arguments when the bot receives a message
 > three types exist for the on command
 
 > the second [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot2.rb) has example code using all of them
