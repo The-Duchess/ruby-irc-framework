@@ -100,6 +100,8 @@
 			end
 		end
 	```
+
+
 > three types exist for the on command
 
 > the second [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot2.rb) has example code using all of them
