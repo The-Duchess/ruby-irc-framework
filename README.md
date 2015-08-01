@@ -104,21 +104,20 @@
 > the second [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot2.rb) has example code using all of them
 
 	```ruby
-		# lets the bot do something on a message with the IRC_message object as an argument
+		# lets the bot do something on a message with IRC_message object the argument
 		# useful for plugins
 		ircbot.on :message do |msg|
 
 		end
 
-		# lets the bot do something on a message with the channel and command as arguments
+		# lets the bot do something on a message with channel and command as arguments
 		# lets the bot respond to commands
 		ircbot.on :command do |channel, command|
 
 		end
 
-		# lets the bot do something on a message with the nick, command, channel, and message content as arguments
-		# this makes using the plugin manager harder since if you want to use plugins you will have to repackage an IRC_message object
-		# but it allows you to do simple if message.match(//) then bot.say("") things easier
+		# lets the bot do something on a message
+		# with the nick, command, channel, and message content as arguments
 		ircbot.on :ircmsg do |nick, command, channel, message|
 
 		end
