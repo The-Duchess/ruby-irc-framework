@@ -42,7 +42,7 @@ end
 # the arguments you have are the channel and the command from the IRC_message
 bot.on :command do |chnl, cmd|
       case |chnl|
-      when /#{bot.nick_name}$/
+      when /(\S+) #{bot.nick_name}$/
             if cmd == 'KICK' and auto_rejoin then bot.join(chnl.split(" ")[0].to_s) end
       end
 end
