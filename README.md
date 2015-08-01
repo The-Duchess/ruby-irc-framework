@@ -106,6 +106,7 @@
 
 > the second [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot2.rb) has example code using all of them
 
+
 	```ruby
 		# lets the bot do something on a message with IRC_message object the argument
 		# useful for plugins
