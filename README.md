@@ -16,16 +16,6 @@
 Place rirc.rb in the same directory as your main ircbot file
 
 
-
-
-
-
-
-
-
-
-
-
 		```ruby
 			require_relative 'rirc.rb'
 
@@ -58,12 +48,15 @@ Place rirc.rb in the same directory as your main ircbot file
 
 **→ IRC_Message**
 
-> created by ircbot.parse or initialized with message information
+Created by ircbot.parse or initialized with message information
 
-	msg = ircbot.read
-	ircmsg = ircbot.parse(msg)
-	# or
-	ircmsg = IRC_message.new(command, nick, channel, message, ircmsg)
+
+		```ruby
+			msg = ircbot.read
+			ircmsg = ircbot.parse(msg)
+			# or
+			ircmsg = IRC_message.new(command, nick, channel, message, ircmsg)
+		```
 
 >Provides a structure to store irc messages in a parsed form
 
@@ -87,9 +80,12 @@ Place rirc.rb in the same directory as your main ircbot file
 
 **→ IRCBot**
 
-> initialized with connection information
+Initialized with connection information
 
-	ircbot = IRCBot.new(network, port, nick, user_name, real_name)
+
+		```ruby
+			ircbot = IRCBot.new(network, port, nick, user_name, real_name)
+		```
 
 >Provides a basic core irc bot
 
@@ -224,9 +220,12 @@ Place rirc.rb in the same directory as your main ircbot file
 
 **→ Plugin_manager**
 
-> initialized with the plugin folder file path
+Initialized with the plugin folder file path
 
-	pluginmgr = Plugin_manager.new("/path/to/plugin/folder")
+
+		```ruby
+			pluginmgr = Plugin_manager.new("/path/to/plugin/folder")
+		```
 
 > Plugins based on the [plugin template](https://github.com/The-Duchess/ruby-irc-framework/blob/master/exampleplugin.rb) the framework supports for plugin management.
 
