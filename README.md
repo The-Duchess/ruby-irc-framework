@@ -91,13 +91,7 @@
 
 		ircbot.start!
 
-- on which allows you to register code to be run over various arguments when the bot receives a message
-> three types exist for the on command
->- message
->- command
->- ircmsg
-
->- the second [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot2.rb) has example code using all of them
+- on which allows you to register code to be run over various arguments when the bot receives a message. there are three types: message, command and ircmsg. each type of hook has a certain set of arguments as provided by the code below.
 
 
 
