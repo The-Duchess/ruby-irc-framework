@@ -629,7 +629,7 @@ class IRCBot
 			begin
 				hooks = @hooks['command']
 				if hooks != nil
-					hoonks.each { |h| h.call(msg.channel, msg.command) }
+					hooks.each { |h| h.call(msg.channel, msg.command) }
 				end
 			rescue => e
 				# do not do anything
@@ -638,7 +638,7 @@ class IRCBot
 			begin
 				hooks = @hooks['ircmsg']
 				if hooks != nil
-					hoonks.each { |h| h.call(msg.nick, msg.command, msg.channel, msg.message) }
+					hooks.each { |h| h.call(msg.nick, msg.command, msg.channel, msg.message) }
 				end
 			rescue => e
 				# do not do anything
