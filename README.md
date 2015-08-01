@@ -16,6 +16,7 @@
 Place rirc.rb in the same directory as your main ircbot file
 
 
+
 		```ruby
 			require_relative 'rirc.rb'
 
