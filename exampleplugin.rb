@@ -19,6 +19,9 @@ module Loadable_Plugin
 		# 	- admins array
 		# 	- backlog array of IRC_message objects
 		# output: string to send to the socket
+		# NOTE:
+		# DO NOT CHANGE THE NAME OR ARGUMENTS TO THIS FUNCTION
+		# YOUR PLUGIN WILL NOT WORK
 		def script(message, admins, backlog)
 
 			# plugins must return the raw mesaage they wish to have sent to the socket
@@ -51,7 +54,7 @@ module Loadable_Plugin
 		#	   ]
 		#
 		# reg_p = Regexp.union(prefix)
-		
+
 		@reg = // # regex to call the plugin
 		@filename = "exampleplugin.rb" # file name
 		@pluginname = "template" # name for plugin
@@ -61,8 +64,14 @@ module Loadable_Plugin
 		# this temporary global is used for handing the new plugin back to the bot
 		Template.new(@reg, @pluginname, @filename, @description)
 	end
+
+	# DO NOT CHANGE
+	def get_plugin
+		return @plugin
+	end
 end
 
+# DO NOT CHANGE
 # redefine the loader for the plugin we wish to load
 class Loader
 	include Loadable_Plugin
