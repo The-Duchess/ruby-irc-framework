@@ -107,4 +107,6 @@ description = "detects youtube links and gets the meta data for the vid" # descr
 
 # plugin = Class_name.new(regex, name, file_name, help)
 # this temporary global is used for handing the new plugin back to the bot
-$temp_plugin = Youtube.new(reg, pluginname, filename, description)
+Module Loadable_Plugin
+	temp = Youtube.new(reg, pluginname, filename, description)
+end

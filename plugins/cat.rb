@@ -51,4 +51,7 @@ pluginname = "cat" # name for plugin
 description = "`cat will print a cat" # description and or help
 
 # plugin = Class_name.new(regex, name, file_name, help)
-$temp_plugin = Cat_print.new(reg, pluginname, filename, description)
+
+Module Loadable_Plugin
+	temp = Cat_print.new(reg, pluginname, filename, description)
+end
