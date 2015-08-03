@@ -52,6 +52,6 @@ description = "`cat will print a cat" # description and or help
 
 # plugin = Class_name.new(regex, name, file_name, help)
 
-Module Loadable_Plugin
+module Loadable_Plugin
 	temp = Cat_print.new(reg, pluginname, filename, description)
 end

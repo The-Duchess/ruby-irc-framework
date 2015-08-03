@@ -56,6 +56,6 @@ description = "NOTES ^| HELP" # description and or help
 
 # plugin = Class_name.new(regex, name, file_name, help)
 # this temporary global is used for handing the new plugin back to the bot
-Module Loadable_Plugin
+module Loadable_Plugin
 	temp = Template.new(reg, pluginname, filename, description)
 end
