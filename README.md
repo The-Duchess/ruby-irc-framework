@@ -161,7 +161,7 @@ Initialized with connection information
 
 
 ```ruby
-		ircbot.say("PRIVMSG #chat :hello")
+	ircbot.say("PRIVMSG #chat :hello")
 ```
 
 - join which takes a channel as a string and joins the channel and adds it to the currently active channels
