@@ -117,7 +117,7 @@ Initialized with connection information
 	ircbot.start!
 ```
 
-- on which allows you to register code to be run over various arguments when the bot receives a message. there are three types: message, command and ircmsg. each type of hook has a certain set of arguments as provided by the code below.
+- on which allows you to create hooks to blocks of code for different purposes that are covered in the below code.
 
 
 
