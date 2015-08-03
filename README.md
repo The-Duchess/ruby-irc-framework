@@ -96,7 +96,9 @@ Initialized with connection information
 
 >Provides a number of functions for operation
 
+
 - setup which takes the following arguments and connects and joins channels
+
 >- bool to use ssl
 >- bool to use a server pass
 >- the server pass (can be "" if you do not want to use it)
