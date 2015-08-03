@@ -24,19 +24,20 @@ Place rirc.rb in the same directory as your main ircbot file
 
 
 ```ruby
-		require_relative 'rirc.rb'
+	require_relative 'rirc.rb'
 
-		ircbot = IRCBot.new(network, port, nick, user_name, real_name)
-		bot.set_admins(admins)
+	ircbot = IRCBot.new(network, port, nick, user_name, real_name)
+	bot.set_admins(admins)
 
-		bot.on :message do |msg|
-		      case msg.message
-		      when /^#{bot.nick_name}[,:] (h|H)ello/ then
-		            bot.privmsg(msg.channel, "hi: #{msg.nick}")
-		      end
-		end
-		bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
-		bot.start!
+	bot.on :message do |msg|
+	      case msg.message
+	      when /^#{bot.nick_name}[,:] (h|H)ello/ then
+	            bot.privmsg(msg.channel, "hi: #{msg.nick}")
+	      end
+	end
+	
+	bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
+	bot.start!
 ```
 
 > an [example bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/examplebot.rb) is provided
@@ -58,10 +59,10 @@ Created by ircbot.parse or initialized with message information
 
 
 ```ruby
-		msg = ircbot.read
-		ircmsg = ircbot.parse(msg)
-		# or
-		ircmsg = IRC_message.new(command, nick, channel, message, ircmsg)
+	msg = ircbot.read
+	ircmsg = ircbot.parse(msg)
+	# or
+	ircmsg = IRC_message.new(command, nick, channel, message, ircmsg)
 ```
 
 >Provides a structure to store irc messages in a parsed form
@@ -90,7 +91,7 @@ Initialized with connection information
 
 
 ```ruby
-		ircbot = IRCBot.new(network, port, nick, user_name, real_name)
+	ircbot = IRCBot.new(network, port, nick, user_name, real_name)
 ```
 
 >Provides a basic core irc bot
@@ -116,29 +117,29 @@ Initialized with connection information
 
 
 ```ruby
-		ircbot.on :message do |msg|
-			if msg.message_regex(/^#{ircbot.nick_name}[:,] (h|H)ello/)
-				ircbot.privmsg(msg.channel, "Hi: #{msg.nick}")
-			end
+	ircbot.on :message do |msg|
+		if msg.message_regex(/^#{ircbot.nick_name}[:,] (h|H)ello/)
+			ircbot.privmsg(msg.channel, "Hi: #{msg.nick}")
 		end
+	end
 
-		# lets the bot do something on a message with IRC_message object the argument
-		# useful for plugins
-		ircbot.on :message do |msg|
+	# lets the bot do something on a message with IRC_message object the argument
+	# useful for plugins
+	ircbot.on :message do |msg|
 
-		end
+	end
 
-		# lets the bot do something on a message with channel and command as arguments
-		# lets the bot respond to commands
-		ircbot.on :command do |channel, command|
+	# lets the bot do something on a message with channel and command as arguments
+	# lets the bot respond to commands
+	ircbot.on :command do |channel, command|
 
-		end
+	end
 
-		# lets the bot do something on a message
-		# with the nick, command, channel, and message content as arguments
-		ircbot.on :ircmsg do |nick, command, channel, message|
+	# lets the bot do something on a message
+	# with the nick, command, channel, and message content as arguments
+	ircbot.on :ircmsg do |nick, command, channel, message|
 
-		end
+	end
 ```
 
 - network, port, nick_name, user_name, real_name, backlog and socket all return these respective values
@@ -230,7 +231,7 @@ Initialized with the plugin folder file path
 
 
 ```ruby
-		pluginmgr = Plugin_manager.new("/path/to/plugin/folder")
+	pluginmgr = Plugin_manager.new("/path/to/plugin/folder")
 ```
 
 > Plugins based on the [plugin template](https://github.com/The-Duchess/ruby-irc-framework/blob/master/exampleplugin.rb) the framework supports for plugin management.
