@@ -41,16 +41,17 @@ module Loadable_Plugin
 		end
 	end
 
-	# allows you to support multiple regexes
-	# prefix = [
-	#		//,
-	#		//
-	#	   ]
-	#
-	# reg_p = Regexp.union(prefix)
-
 	def initialize
 		# information the plugin needs to be initialized with
+
+		# allows you to support multiple regexes
+		# prefix = [
+		#		//,
+		#		//
+		#	   ]
+		#
+		# reg_p = Regexp.union(prefix)
+		
 		@reg = // # regex to call the plugin
 		@filename = "exampleplugin.rb" # file name
 		@pluginname = "template" # name for plugin
