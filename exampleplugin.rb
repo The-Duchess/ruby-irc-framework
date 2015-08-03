@@ -62,7 +62,7 @@ module Loadable_Plugin
 
 		# plugin = Class_name.new(regex, name, file_name, help)
 		# this temporary global is used for handing the new plugin back to the bot
-		Template.new(@reg, @pluginname, @filename, @description)
+		@plugin = Template.new(@reg, @pluginname, @filename, @description)
 	end
 
 	# DO NOT CHANGE
