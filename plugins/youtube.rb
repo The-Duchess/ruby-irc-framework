@@ -94,7 +94,7 @@ module Loadable_Plugin
 		@pluginname = "YouTube" # name for plugin
 		@description = "detects youtube links and gets the meta data for the vid" # description and or help
 
-		@plugin = YouTube.new(@reg, @pluginname, @filename, @description)
+		@plugin = Youtube.new(@reg, @pluginname, @filename, @description)
 	end
 
 	def get_plugin
