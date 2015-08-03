@@ -314,7 +314,7 @@ class Plugin_manager
 		if name.match(/.rb$/)
 			begin
 				load "#{name}"
-				temp_plugin = Loadable_Plugin::temp
+				temp_plugin = Loadable_Plugin::TEMP
 				if plugin_loaded(temp_plugin.name)
 					temp_plugin = nil
 					return "Plugin #{name} is already loaded"
