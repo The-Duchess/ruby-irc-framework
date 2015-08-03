@@ -80,7 +80,7 @@ Created by ircbot.parse or initialized with message information
 
 
 ```ruby
-	ircmsg.message_regex(/^!join /)
+	ircmsg.message_regex(/^!join (\S+)/)
 ```
 
 **→ IRCBot**
