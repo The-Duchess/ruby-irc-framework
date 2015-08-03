@@ -23,7 +23,7 @@ Place rirc.rb in the same directory as your main ircbot file
 
 
 
-		```ruby
+```ruby
 			require_relative 'rirc.rb'
 
 			ircbot = IRCBot.new(network, port, nick, user_name, real_name)
@@ -38,7 +38,7 @@ Place rirc.rb in the same directory as your main ircbot file
 
 			bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 			bot.start!
-		```
+```
 
 > an [example bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/examplebot.rb) is provided
 
@@ -58,12 +58,12 @@ Place rirc.rb in the same directory as your main ircbot file
 Created by ircbot.parse or initialized with message information
 
 
-		```ruby
+```ruby
 			msg = ircbot.read
 			ircmsg = ircbot.parse(msg)
 			# or
 			ircmsg = IRC_message.new(command, nick, channel, message, ircmsg)
-		```
+```
 
 >Provides a structure to store irc messages in a parsed form
 
@@ -90,9 +90,9 @@ Created by ircbot.parse or initialized with message information
 Initialized with connection information
 
 
-		```ruby
+```ruby
 			ircbot = IRCBot.new(network, port, nick, user_name, real_name)
-		```
+```
 
 >Provides a basic core irc bot
 
@@ -116,7 +116,7 @@ Initialized with connection information
 
 
 
-	```ruby
+```ruby
 		ircbot.on :message do |msg|
 			if msg.message_regex(/^#{ircbot.nick_name}[:,] (h|H)ello/)
 				ircbot.privmsg(msg.channel, "Hi: #{msg.nick}")
@@ -140,7 +140,7 @@ Initialized with connection information
 		ircbot.on :ircmsg do |nick, command, channel, message|
 
 		end
-	```
+```
 
 - network, port, nick_name, user_name, real_name, backlog and socket all return these respective values
 > the backlog is updated automatically for you if using the following to run the bot
