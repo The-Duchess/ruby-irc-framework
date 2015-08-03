@@ -3,7 +3,7 @@
 
 **Important Notes**
 
->- NOTE: if you were using version 3.4 or earlier you will need to update your plugins to the new template as the global plugin hack has been removed requiring a change in plugins so version 3.4 plugins will no longer work with version 4.
+>- If you were using version 3.4 or earlier you will need to update your plugins to the new template as the global plugin hack has been removed requiring a change in plugins so version 3.4 plugins will no longer work with version 4.
 
 **About**
 
