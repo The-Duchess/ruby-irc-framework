@@ -114,7 +114,10 @@ Initialized with connection information
 
 - start! which starts the bot
 
-		ircbot.start!
+
+```ruby
+	ircbot.start!
+```
 
 - on which allows you to register code to be run over various arguments when the bot receives a message. there are three types: message, command and ircmsg. each type of hook has a certain set of arguments as provided by the code below.
 
