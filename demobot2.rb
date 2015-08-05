@@ -32,9 +32,8 @@ bot.on :message do |msg|
 end
 
 bot.on :message do |msg|
-      plug.plugins.each do |plugin|
-            if msg.message_regex(plugin.regex) then bot.say(plugin.script(msg, bot.backlog, bot.admins)) end
-      end
+      responses = plug.check_all(msg, admins, bot.backlog)
+      responses.each { |a| bot.say(a) }
 end
 
 # bot.on :command allows the bot to respond to commands that may affect it

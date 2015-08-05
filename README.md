@@ -35,7 +35,7 @@ Place rirc.rb in the same directory as your main ircbot file
 	            bot.privmsg(msg.channel, "hi: #{msg.nick}")
 	      end
 	end
-	
+
 	bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 	bot.start!
 ```
@@ -148,6 +148,7 @@ Initialized with connection information
 ```
 
 - network, port, nick_name, user_name, real_name, backlog and socket all return these respective values
+
 > the backlog is updated automatically for you if using the following to run the bot
 
 
