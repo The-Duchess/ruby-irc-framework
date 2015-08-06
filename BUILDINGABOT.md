@@ -9,25 +9,25 @@
 - [optional] copy over the plugins from rirc
 
 
-      # windows git shell
-      cd \path\to\your\git\folder\
-      git clone https://github.com/The-Duchess/ruby-irc-framework
-      mkdir <your bot folder>
-      cd <your bot folder>
-      cp ..\ruby-irc-framework\rirc.rb .\
-      mkdir <your plugins folder>
-      # optional
-      cp ..\ruby-irc-framework\plugins\* .\<your plugins folder>\
+            # windows git shell
+            cd \path\to\your\git\folder\
+            git clone https://github.com/The-Duchess/ruby-irc-framework
+            mkdir <your bot folder>
+            cd <your bot folder>
+            cp ..\ruby-irc-framework\rirc.rb .\
+            mkdir <your plugins folder>
+            # optional
+            cp ..\ruby-irc-framework\plugins\* .\<your plugins folder>\
 
-      # linux with git in your path
-      cd /path/to/your/git/folder/
-      git clone https://github.com/The-Duchess/ruby-irc-framework
-      mkdir -pv <your bot folder>
-      cd <your bot folder>
-      cp ../ruby-irc-framework/rirc.rb ./
-      mkdir -pv <your plugins folder>
-      # optional
-      cp ../ruby-irc-framework/plugins/* ./<your plugins folder>/
+            # linux with git in your path
+            cd /path/to/your/git/folder/
+            git clone https://github.com/The-Duchess/ruby-irc-framework
+            mkdir -pv <your bot folder>
+            cd <your bot folder>
+            cp ../ruby-irc-framework/rirc.rb ./
+            mkdir -pv <your plugins folder>
+            # optional
+            cp ../ruby-irc-framework/plugins/* ./<your plugins folder>/
 
 **To create your bot**
 
@@ -138,6 +138,8 @@ Start the bot
       bot.start!
 ```
 
-
+Save the file to <your bot>.rb
 
 **Running your bot**
+
+      ruby <your bot>.rb
