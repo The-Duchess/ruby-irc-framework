@@ -24,12 +24,7 @@ plugins_list.each { |a| plug.plugin_load(a) }
 bot.set_admins(admins)
 
 # cmnd.on is a a feature that allows the user to add hooks that takes
-# - the ircbot
-# - msg
-# - plugins
-# this allows you to create hooks for bot commands that change bot state
-# or control plugins without having to manually write huge case statements
-# to handle all possible commands.
+# it is still experimental but the README has information
 cmnd.on /^!join (\S+)/ do |ircbot, msg, plugins|
       channel = msg.message.split(" ")[1].to_s
       ircbot.join(channel)
@@ -37,7 +32,6 @@ end
 
 # bot.on :message does actions when the irc bot recieves a message
 # the argument you have is the IRC_message object
-
 bot.on :message do |msg|
       case msg.message
       when /^#{bot.nick_name}[,:] (h|H)ello/ then
