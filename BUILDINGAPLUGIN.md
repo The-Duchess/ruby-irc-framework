@@ -54,11 +54,51 @@ This help is presented to help you understand the plugin system and to easily bu
 >- add any functions you may need to the class
 >- [optional] editing the initialization function for the class (this will be covered at the end)
 >- initialize function to set internal variables for the plugin. these control
+
 >>- regex that will trigger the plugin being called on a message
+
 >>- file name that allows the plugin manager to reload the correct plugin
+
 >>- plugin name that people access help with, unload the module with, and see if you implement a way to list loaded plugins
+
 >>- description which gives a simple explanation of the plugin and or usage
+
 >>- the creation of an instance of the plugin class which will trigger when the plugin is loaded and handed back from the loader
+
+
+**plugin script function**
+
+inputs
+
+- IRC_message object
+- admins array
+- backlog array of IRC_message objects arranged from least recent to most recent
+
+
+output
+
+- raw string to be sent to the socket
+
+
+```ruby
+            # your definition for function called if the regex for the plugin matches the message.message
+            # NOTE:
+            # DO NOT CHANGE THE NAME OR ARGUMENTS TO THIS FUNCTION
+            # YOUR PLUGIN WILL NOT WORK
+            def script(message, admins, backlog)
+
+                  # plugins must return the raw mesaage they wish to have sent to the socket
+                  # return "PRIVMSG #{message.chan} :hello"
+                  # or you can use functions to simplify this
+                  # an example for privmsg is provided below
+                  return privmsg(message.channel, "hello")
+            end
+
+            def privmsg(dest, message)
+                  return "PRIVMSG #{dest} :#{message}"
+            end
+```
+
 
 **plugin variables**
 
