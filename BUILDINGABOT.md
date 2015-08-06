@@ -31,7 +31,7 @@
 
 **To create your bot**
 
-- open up a programming text editor (i.e Atom)
+- open up a programming text editor (i.e. Atom)
 - include the framework
 - then add configuration
 - create the IRCBot
