@@ -24,7 +24,7 @@ module Loadable_Plugin
 		# YOUR PLUGIN WILL NOT WORK
 		def script(message, admins, backlog)
 
-			# plugins must return the raw mesaage they wish to have sent to the socket
+			# plugins must return the raw message they wish to have sent to the socket
 			# return "PRIVMSG #{message.chan} :hello"
 			# or you can use functions to simplify this
 			# some are provided below

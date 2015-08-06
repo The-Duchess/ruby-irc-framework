@@ -87,7 +87,7 @@ output
             # YOUR PLUGIN WILL NOT WORK
             def script(message, admins, backlog)
 
-                  # plugins must return the raw mesaage they wish to have sent to the socket
+                  # plugins must return the raw message they wish to have sent to the socket
                   # return "PRIVMSG #{message.chan} :hello"
                   # or you can use functions to simplify this
                   # an example for privmsg is provided below
