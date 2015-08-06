@@ -667,6 +667,8 @@ class Commands_manager
 
 	def check_all(bot, msg, plugins)
 	      0.upto(@size - 1) do |i|
+			p "reg: #{reg_s[i]}"
+			p "hook #{hook_s[i]}"
 	            if msg.message_regex(@reg_s[i])
 	                  @hook_s[i].call(bot, msg, plugins)
 	            end
