@@ -32,7 +32,7 @@ bot.on :message do |msg|
 end
 
 bot.on :message do |msg|
-      responses = plug.check_all(msg, admins, bot.backlog)
+      responses = plug.check_all(msg, bot.admins, bot.backlog)
       responses.each { |a| bot.say(a) }
 end
 
