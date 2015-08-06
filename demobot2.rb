@@ -19,11 +19,19 @@ auto_rejoin = true
 
 bot = IRCBot.new(network, port, nick, username, realname)
 plug = Plugin_manager.new("./plugins")
+cmnd = Commands.new
 plugins_list.each { |a| plug.plugin_load(a) }
 bot.set_admins(admins)
 
 # bot.on :message does actions when the irc bot recieves a message
 # the argument you have is the IRC_message object
+
+
+cmnd.on /^`join ##?(\S+)/ do |bot, msg, plug|
+      channel = msg.message.split(" ")[1].to_s
+      bot.join(channel)
+end
+
 bot.on :message do |msg|
       case msg.message
       when /^#{bot.nick_name}[,:] (h|H)ello/ then
@@ -34,6 +42,10 @@ end
 bot.on :message do |msg|
       responses = plug.check_all(msg, bot.admins, bot.backlog)
       responses.each { |a| bot.say(a) }
+end
+
+bot.on :message do |msg|
+      command.check_all(bot, msg, plug)
 end
 
 # bot.on :command allows the bot to respond to commands that may affect it

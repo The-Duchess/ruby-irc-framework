@@ -650,3 +650,38 @@ class IRCBot
 	      end
 	end
 end
+
+class Commands
+	def initialize
+		@reg_s = []
+		@hook_s = []
+		@size = 0
+	end
+
+	def on(reg, &block)
+	      reg = Regexp.new(reg.to_s)
+	      @reg_s.push(reg)
+	      @hook_s << block
+	      @size += 1
+	end
+
+	def check_all(bot, msg, plugins)
+	      0.upto(@size - 1) do |i|
+	            if msg.message_regex(@reg_s[i])
+	                  @hook_s[i].call(bot, msg, plugins)
+	            end
+	      end
+	end
+
+	def hooks
+		return @hook_s
+	end
+
+	def regexes
+		return @reg_s
+	end
+
+	def size
+		return @size
+	end
+end
