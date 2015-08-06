@@ -19,7 +19,7 @@ auto_rejoin = true
 
 bot = IRCBot.new(network, port, nick, username, realname)
 plug = Plugin_manager.new("./plugins")
-cmnd = Commands.new
+cmnd = Commands_manager.new
 plugins_list.each { |a| plug.plugin_load(a) }
 bot.set_admins(admins)
 

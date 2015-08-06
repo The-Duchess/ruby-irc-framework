@@ -651,7 +651,7 @@ class IRCBot
 	end
 end
 
-class Commands
+class Commands_manager
 	def initialize
 		@reg_s = []
 		@hook_s = []
