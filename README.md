@@ -42,6 +42,8 @@ Place rirc.rb in the same directory as your main ircbot file
 
 > for further help building a bot check this [help](https://github.com/The-Duchess/ruby-irc-framework/blob/master/BUILDINGABOT.md)
 
+> if you have a working bot folder and plugins folder and want to make plugins check this [help](https://github.com/The-Duchess/ruby-irc-framework/blob/master/BUILDINGAPLUGIN.md)
+
 > a [functioning bot](https://github.com/The-Duchess/ruby-irc-framework/blob/master/demobot2.rb) is provided
 
 > the functioning bot also supports use of an example [plugin](https://github.com/The-Duchess/ruby-irc-framework/blob/master/plugins/cat.rb)
