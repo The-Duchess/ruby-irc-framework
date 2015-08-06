@@ -59,7 +59,6 @@ Configuration
       # projects i have include bluckbot, which uses a set of files stored in a res folder,
       # and husk, which uses a module system.
       # but you are free to use whatever method works for you.
-      # make sure to use the appropriate values and not the example values
 
       network = "irc.freenode.net"
       port = 6667
@@ -138,7 +137,9 @@ Start the bot
       bot.start!
 ```
 
-Save the file to <your bot>.rb
+Save the file to
+
+      <your bot>.rb
 
 **Running your bot**
 
