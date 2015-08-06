@@ -660,9 +660,8 @@ class Commands_manager
 
 	def on(reg, &block)
 	      reg = Regexp.new(reg.to_s)
-		p reg.to_s
 	      @reg_s.push(reg)
-		p @reg_s.to_s
+		puts block
 	      @hook_s << block
 	      @size += 1
 	end
