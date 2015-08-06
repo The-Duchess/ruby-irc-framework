@@ -677,7 +677,7 @@ class Commands_manager
 		return @hook_s
 	end
 
-	def regexes
+	def regs
 		return @reg_s
 	end
 

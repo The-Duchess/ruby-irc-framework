@@ -26,10 +26,9 @@ bot.set_admins(admins)
 # bot.on :message does actions when the irc bot recieves a message
 # the argument you have is the IRC_message object
 
-
-cmnd.on /^`join ##?(\S+)/ do |bot, msg, plug|
+cmnd.on /^`join ##?(\S+)/ do |ircbot, msg, plugins|
       channel = msg.message.split(" ")[1].to_s
-      bot.join(channel)
+      ircbot.join(channel)
 end
 
 bot.on :message do |msg|
@@ -44,8 +43,20 @@ bot.on :message do |msg|
       responses.each { |a| bot.say(a) }
 end
 
+#bot.on :message do |msg|
+#      cmnd.check_all(bot, msg, plug)
+#end
+
 bot.on :message do |msg|
-      command.check_all(bot, msg, plug)
+      cmds = cmnd.hooks
+      regexes = cmnd.regs
+      len = cmnd.size - 1
+
+      0.upto(len) do |i|
+            if msg.message_regex(regexes[i])
+                  cmds[i].call(bot, msg, plug)
+            end
+      end
 end
 
 # bot.on :command allows the bot to respond to commands that may affect it
