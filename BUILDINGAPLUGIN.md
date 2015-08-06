@@ -44,7 +44,7 @@ This help is presented to help you understand the plugin system and to easily bu
             end
 ```
 
-> The plugin system uses modules with the same name that is contained in a class definition that always uses the same name. This allows the lazy evaluation of ruby to circumvent the inability to share local variables between files that would otherwise require using globals, which are a horrible idea to use in a framework.
+> The plugin system uses a module with the same name that is contained in a class definition that always uses the same name. This allows the lazy evaluation of ruby to circumvent the inability to share local variables between files that would otherwise require using globals, which are a horrible idea to use in a framework.
 
 - Save the file now so you know what your file name will be as this is stored by the plugin for reloading
 - Edit the parts of the plugin that can and need to be changed to give the functionality you want
