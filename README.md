@@ -502,7 +502,7 @@ The command manager is a hook system like the ircbot's on function. it's still c
 
 
 ```ruby
-	cmnd.on /^`join ##?(\S+)/ do |ircbot, msg, pluginmgr|
+	cmnd.on /^!join ##?(\S+)/ do |ircbot, msg, pluginmgr|
 	      channel = msg.message.split(" ")[1].to_s
 	      ircbot.join(channel)
 	end
