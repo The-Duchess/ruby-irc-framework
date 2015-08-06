@@ -1,9 +1,11 @@
 # **Ruby IRC Framework**
-**Version 0.4.0**
+**Version 0.5.0**
 
 **Important Notes**
 
->- If you were using version 0.3.4 or earlier you will need to update your plugins to the new template as version 0.3.4 plugins will no longer work with version 0.4.0.
+>- The Plugins system changed after 0.3.4 but is no longer receiving updates that will affect compatibility.
+
+>- The Command_manager is currently in development
 
 **About**
 
@@ -470,3 +472,40 @@ Initialized with the plugin folder file path
 ```ruby
 	pluginmgr.reload("name")
 ```
+
+**→ Command_manager**
+
+NOTE: This is a new experimental feature that is still receiving regular updates.
+
+```ruby
+	cmnd = Command_manager.new
+```
+
+The command manager is a hook system like the ircbot's on function. it's still crude and requires the below hook to work.
+
+
+```ruby
+	ircbot.on :message do |msg|
+	      cmds = cmnd.hooks
+	      regexes = cmnd.regs
+	      len = cmnd.size - 1
+
+	      0.upto(len) do |i|
+	            if msg.message_regex(regexes[i])
+	                  cmds[i].call(ircbot, msg, pluginmgr)
+	            end
+	      end
+	end
+```
+
+> The concept is that you can more easily add commands to the bot that allow you to tell it to do things, change its state and control plugins. however it's still a feature that's in 'alpha'. it's tested and works but it lacks a simple easy to use interface which is currently being worked on. When it is complete, and easy to use, help for it will be included in the help for building an irc bot. an example of it is given below.
+
+
+```ruby
+	cmnd.on /^`join ##?(\S+)/ do |ircbot, msg, pluginmgr|
+	      channel = msg.message.split(" ")[1].to_s
+	      ircbot.join(channel)
+	end
+```
+
+> the Command_manager object allows you to create blocks of code that take the ircbot, IRC_message object, and pluginmgr so you can easily control the irc bot as plugins cannot see beyond the small amount in information they are given as plugins should not be able to control the object that controls them much less other things at that level.
