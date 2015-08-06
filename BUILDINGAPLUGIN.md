@@ -141,7 +141,7 @@ The plugin system allows you to edit the script function along with some simple 
 
 You also have access to a number of built in functions inside the default plugin class which all plugins inherit.
 
-- The ability to overload the initialization function
+- The ability to redefine the initialization function
 - The ability to specify what happens when the plugin is unloaded (also reloaded since plugins are fully unloaded when reload is run)
 
 > Default initialization code
@@ -161,7 +161,7 @@ You also have access to a number of built in functions inside the default plugin
 
 > Code that is called when a plugin is unloaded
 
-> you can overload this function to perform state save or other calls when the plugin is unloaded
+> you can redefine this function to perform state save or other calls when the plugin is unloaded
 
 ```ruby
       def cleanup
