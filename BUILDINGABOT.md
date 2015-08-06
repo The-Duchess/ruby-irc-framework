@@ -131,6 +131,8 @@ Start the bot
 
 ```ruby
       # Hand the bot connection info and have the bot do the initial connect
+      # it will connect, identify if the nickserv_pass is not "", and join all members of the channels array.
+      # you can prevent automatically joining by having that done later triggered by commands and have channels be empty.
       bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 
       # Tell the bot to start running
