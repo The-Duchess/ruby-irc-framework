@@ -43,9 +43,7 @@ bot.on :message do |msg|
       when /^#{bot.nick_name}[,:] (h|H)ello/ then
             bot.privmsg(msg.channel, "hi: #{msg.nick}")
       end
-end
-
-bot.on :message do |msg|
+      
       responses = plug.check_all(msg, bot.admins, bot.backlog)
       responses.each { |a| bot.say(a) }
 end
