@@ -56,7 +56,7 @@ Configuration
 ```ruby
 
       # you can setup configuration however you want
-      # projected i have include bluckbot, which uses a set of files stored in a res folder,
+      # projects i have include bluckbot, which uses a set of files stored in a res folder,
       # and husk, which uses a module system.
       # but you are free to use whatever method works for you.
       # make sure to use the appropriate values and not the example values
