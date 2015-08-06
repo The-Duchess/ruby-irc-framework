@@ -133,7 +133,8 @@ Start the bot
 
 ```ruby
       # Hand the bot connection info and have the bot do the initial connect
-      # it will connect, identify if the nickserv_pass is not "", and join all members of the channels array.
+      # it will connect, identify if the nickserv_pass is not "", and join all
+      # members of the channels array.
       # you can prevent automatically joining by having that done later
       # a) triggered by commands
       # and
