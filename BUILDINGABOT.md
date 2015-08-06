@@ -1,5 +1,7 @@
 #**Bot Design Help**
 
+> NOTE: reading the README first will be helpful
+
 **To start**
 
 - clone the repo
@@ -132,7 +134,14 @@ Start the bot
 ```ruby
       # Hand the bot connection info and have the bot do the initial connect
       # it will connect, identify if the nickserv_pass is not "", and join all members of the channels array.
-      # you can prevent automatically joining by having that done later triggered by commands and have channels be empty.
+      # you can prevent automatically joining by having that done later
+      # a) triggered by commands
+      # and
+      # b) have channels be empty.
+      # should you not require a password then you can set
+      # a) use_pass to false
+      # and
+      # b) set pass to "" or anything
       bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 
       # Tell the bot to start running
