@@ -508,4 +508,4 @@ The command manager is a hook system like the ircbot's on function. it's still c
 	end
 ```
 
-> the Command_manager object allows you to create blocks of code that take the ircbot, IRC_message object, and pluginmgr so you can easily control the irc bot as plugins cannot see beyond the small amount in information they are given as plugins should not be able to control the object that controls them much less other things at that level.
+> the Command_manager object allows you to create blocks of code that take the ircbot, IRC_message object, and pluginmgr that are triggered by the regex. this resolves the issue of scope and plugins and in theory gives an easier way to handle commands.
