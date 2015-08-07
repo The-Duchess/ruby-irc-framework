@@ -652,6 +652,7 @@ class IRCBot
 end
 
 class Commands_manager
+
 	def initialize
 		@reg_s = []
 		@hook_s = []
@@ -665,7 +666,7 @@ class Commands_manager
 	      @size += 1
 	end
 
-	def check_cmds(bot, msg, pluginmgr)
+	def check_cmds(ircbot, msg, pluginmgr)
 
 		if @size == 0
 			return
@@ -673,7 +674,7 @@ class Commands_manager
 
 		0.upto(@size - 1) do |i|
 			if msg.message_regex(@reg_s[i])
-				@hook_s[i].call(bot, msg, pluginmgr)
+				@hook_s[i].call(ircbot, msg, pluginmgr)
 			end
 		end
 	end

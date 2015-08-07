@@ -23,13 +23,6 @@ cmnd = Commands_manager.new
 plugins_list.each { |a| plug.plugin_load(a) }
 bot.set_admins(admins)
 
-# cmnd.on is a a feature that allows the user to add hooks that takes
-# - the ircbot
-# - msg
-# - plugins
-# this allows you to create hooks for bot commands that change bot state
-# or control plugins without having to manually write huge case statements
-# to handle all possible commands.
 cmnd.on /^`join ##?(\S+)/ do |ircbot, msg, plugins|
       channel = msg.message.split(" ")[1].to_s
       ircbot.join(channel)
@@ -37,15 +30,14 @@ end
 
 # bot.on :message does actions when the irc bot recieves a message
 # the argument you have is the IRC_message object
-
 bot.on :message do |msg|
       case msg.message
       when /^#{bot.nick_name}[,:] (h|H)ello/ then
             bot.privmsg(msg.channel, "hi: #{msg.nick}")
       end
-end
 
-bot.on :message do |msg|
+      cmnd.check_cmds(bot, msg, plug)
+
       responses = plug.check_all(msg, bot.admins, bot.backlog)
       responses.each { |a| bot.say(a) }
 end
@@ -56,17 +48,13 @@ end
 #      cmds = cmnd.hooks
 #      regexes = cmnd.regs
 #      len = cmnd.size - 1
-
+#
 #      0.upto(len) do |i|
 #            if msg.message_regex(regexes[i])
 #                  cmds[i].call(bot, msg, plug)
 #            end
 #      end
 #end
-
-bot.on :message do |msg|
-      cmnd.check_cmds(bot, msg, plug)
-end
 
 # bot.on :command allows the bot to respond to commands that may affect it
 # the arguments you have are the channel and the command from the IRC_message
