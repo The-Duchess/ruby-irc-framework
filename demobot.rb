@@ -18,14 +18,14 @@ plugin_folder = "./plugins"
 plugins_list = ["cat.rb", "youtube.rb"]
 
 # Create the IRCBot object, or your irc client
-bot = IRCBot.new(network, port, nick, user_name, real_name)
+bot = IRCBot.new(network, port, nick, username, realname)
 # Add admins to the IRCBOT object, or your irc client
 bot.set_admins(admins)
 
 plug = Plugin_manager.new(plugin_folder)
 plugins_list.each { |a| plug.plugin_load(a) }
 
-commands = Command_manager.new
+commands = Commands_manager.new
 
 commands.on /^!join (\S+)/ do |ircbot, msg, pluginmgr|
       channel = msg.message.split(" ")[1].to_s
@@ -33,6 +33,7 @@ commands.on /^!join (\S+)/ do |ircbot, msg, pluginmgr|
 end
 
 bot.on :message do |msg|
+      
       commands.check_cmds(bot, msg, plug)
 
       responses = plug.check_all(msg, bot.admins, bot.backlog)

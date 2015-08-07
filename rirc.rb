@@ -668,6 +668,11 @@ class Commands_manager
 
 	def check_cmds(ircbot, msg, pluginmgr)
 
+		# this works in hooks for the bot but if this code is run by the commands manager it doesn't
+		# this literally makes zero sense since code in a block is being called in one situation and it isn't
+		# in another when the rest of the code in the block is run.
+		puts "check commands has been run"
+
 		if @size == 0
 			return
 		end
