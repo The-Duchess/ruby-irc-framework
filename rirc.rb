@@ -665,6 +665,19 @@ class Commands_manager
 	      @size += 1
 	end
 
+	def check_cmds(bot, msg, pluginmgr)
+
+		if @size == 0
+			return
+		end
+
+		0.upto(@size - 1) do |i|
+			if msg.message_regex(@reg_s[i])
+				@hook_s[i].call(bot, msg, pluginmgr)
+			end
+		end
+	end
+
 	def hooks
 		return @hook_s
 	end

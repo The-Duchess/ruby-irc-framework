@@ -52,16 +52,20 @@ end
 
 # this part is required to handle the Commands_manager
 # this is really crude and needs to be fixed up
-bot.on :message do |msg|
-      cmds = cmnd.hooks
-      regexes = cmnd.regs
-      len = cmnd.size - 1
+#bot.on :message do |msg|
+#      cmds = cmnd.hooks
+#      regexes = cmnd.regs
+#      len = cmnd.size - 1
 
-      0.upto(len) do |i|
-            if msg.message_regex(regexes[i])
-                  cmds[i].call(bot, msg, plug)
-            end
-      end
+#      0.upto(len) do |i|
+#            if msg.message_regex(regexes[i])
+#                  cmds[i].call(bot, msg, plug)
+#            end
+#      end
+#end
+
+bot.on :message do |msg|
+      cmnd.check_cmds(bot, msg, plug)
 end
 
 # bot.on :command allows the bot to respond to commands that may affect it
