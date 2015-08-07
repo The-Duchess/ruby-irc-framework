@@ -128,6 +128,42 @@ Add custom behavior
       end
 ```
 
+[Advanced Custom Behavior]
+
+
+The rirc framework supports a class
+
+
+```ruby
+      commands.Commands_manager.new
+```
+
+which allows you to add commands to the bot, that can:
+- Tell the bot to do something
+- Tell the bot to change state
+- Control the Plugin manager
+
+, that are set by regex
+
+
+```ruby
+	commands.on /^!join (\S+)/ do |ircbot, msg, pluginmgr|
+	      channel = msg.message.split(" ")[1].to_s
+	      ircbot.join(channel)
+	end
+```
+
+The commands then have to be attached to a new, or can be placed in an existing bot.on, hook
+
+> they can all be checked in one call.
+
+
+```ruby
+	ircbot.on :message do |msg|
+		commands.check_cmds(ircbot, msg, pluginmgr)
+	end
+```
+
 Start the bot
 
 

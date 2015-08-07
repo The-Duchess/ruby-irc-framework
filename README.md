@@ -5,7 +5,7 @@
 
 >- The Plugins system changed after 0.3.4 but is no longer receiving updates that will affect compatibility.
 
->- The Command_manager is currently in development
+>- The Commands_manager is no longer receiving updates that will affect compatibility.
 
 **About**
 
