@@ -85,7 +85,7 @@ Create IRCBot
 ```ruby
 
       # Create the IRCBot object, or your irc client
-      ircbot = IRCBot.new(network, port, nick, user_name, real_name)
+      bot = IRCBot.new(network, port, nick, user_name, real_name)
       # Add admins to the IRCBOT object, or your irc client
       bot.set_admins(admins)
 ```
