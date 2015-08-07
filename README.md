@@ -485,7 +485,7 @@ This feature allows you to make commands by regex that can:
 	cmnd = Command_manager.new
 ```
 
-> The command manager is a hook system like the ircbot's on function. it requires you to add a check to a new ircbot hook or place it in an existing one.
+> The command manager is a hook system like the ircbot's on function. It requires you to add a check to a new ircbot hook or place it in an existing one.
 
 
 ```ruby
