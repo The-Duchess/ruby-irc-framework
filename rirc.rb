@@ -668,10 +668,8 @@ class Commands_manager
 
 	def check_cmds(ircbot, msg, pluginmgr)
 
-		# this works in hooks for the bot but if this code is run by the commands manager it doesn't
-		# this literally makes zero sense since code in a block is being called in one situation and it isn't
-		# in another when the rest of the code in the block is run.
-		puts "check commands has been run"
+		# it's running now but the code blocks do not excecute right
+		# puts "check commands has been run"
 
 		if @size == 0
 			return
@@ -679,6 +677,9 @@ class Commands_manager
 
 		0.upto(@size - 1) do |i|
 			if msg.message_regex(@reg_s[i])
+				puts @reg_s[i]
+				puts "run"
+				puts "_______________________________________"
 				@hook_s[i].call(ircbot, msg, pluginmgr)
 			end
 		end
