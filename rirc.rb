@@ -668,20 +668,12 @@ class Commands_manager
 
 	def check_cmds(ircbot, msg, pluginmgr)
 
-		# it's running now but the code blocks do not excecute right
-		# puts "check commands has been run"
-
 		if @size == 0
 			return
 		end
 
 		0.upto(@size - 1) do |i|
-			puts "_______________________________________"
-			puts @reg_s[i]
-			puts msg.message
 			if msg.message_regex(@reg_s[i])
-				puts "run"
-				puts "_______________________________________"
 				@hook_s[i].call(ircbot, msg, pluginmgr)
 			end
 		end
