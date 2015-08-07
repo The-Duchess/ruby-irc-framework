@@ -496,10 +496,17 @@ This feature allows you to make commands by regex that can:
 
 > Example command hook:
 
-
 ```ruby
 	cmnd.on /^!join (\S+)/ do |ircbot, msg, pluginmgr|
 	      channel = msg.message.split(" ")[1].to_s
 	      ircbot.join(channel)
 	end
 ```
+
+> The command hooks create blocks of code that are triggered on the regex and are given the arguments:
+
+>- ircbot: an IRCBot instance
+
+>- msg: an IRC_message object
+
+>- pluginmgr: a Plugin_manager instance
