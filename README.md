@@ -475,7 +475,11 @@ Initialized with the plugin folder file path
 
 **→ Command_manager**
 
-NOTE: This is a new experimental feature that is still receiving regular updates.
+This feature allows you to make commands by regex that can:
+- Tell the bot to do something
+- Tell the bot to change state
+- Control the Plugin manager
+
 
 ```ruby
 	cmnd = Command_manager.new
@@ -486,19 +490,11 @@ The command manager is a hook system like the ircbot's on function. it's still c
 
 ```ruby
 	ircbot.on :message do |msg|
-	      cmds = cmnd.hooks
-	      regexes = cmnd.regs
-	      len = cmnd.size - 1
-
-	      0.upto(len) do |i|
-	            if msg.message_regex(regexes[i])
-	                  cmds[i].call(ircbot, msg, pluginmgr)
-	            end
-	      end
+		cmnd.check_cmds(ircbot, msg, pluginmgr)
 	end
 ```
 
-> The concept is that you can more easily add commands to the bot that allow you to tell it to do things, change its state and control plugins. however it's still a feature that's in 'alpha'. it's tested and works but it lacks a simple easy to use interface which is currently being worked on. When it is complete, and easy to use, help for it will be included in the help for building an irc bot. an example of it is given below.
+Example command hook:
 
 
 ```ruby
@@ -507,5 +503,3 @@ The command manager is a hook system like the ircbot's on function. it's still c
 	      ircbot.join(channel)
 	end
 ```
-
-> the Command_manager object allows you to create blocks of code that take the ircbot, IRC_message object, and pluginmgr that are triggered by the regex. this resolves the issue of scope and plugins and in theory gives an easier way to handle commands.
