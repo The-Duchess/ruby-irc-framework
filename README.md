@@ -485,7 +485,7 @@ This feature allows you to make commands by regex that can:
 	cmnd = Command_manager.new
 ```
 
-The command manager is a hook system like the ircbot's on function. it's still crude and requires the below hook to work.
+> The command manager is a hook system like the ircbot's on function. it's still crude and requires the below hook to work.
 
 
 ```ruby
@@ -494,7 +494,7 @@ The command manager is a hook system like the ircbot's on function. it's still c
 	end
 ```
 
-Example command hook:
+> Example command hook:
 
 
 ```ruby
