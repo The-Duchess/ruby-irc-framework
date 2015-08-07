@@ -676,8 +676,10 @@ class Commands_manager
 		end
 
 		0.upto(@size - 1) do |i|
+			puts "_______________________________________"
+			puts @reg_s[i]
+			puts msg.message
 			if msg.message_regex(@reg_s[i])
-				puts @reg_s[i]
 				puts "run"
 				puts "_______________________________________"
 				@hook_s[i].call(ircbot, msg, pluginmgr)
