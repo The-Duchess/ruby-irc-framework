@@ -159,7 +159,7 @@ The commands then have to be attached to a new, or can be placed in an existing 
 
 
 ```ruby
-	ircbot.on :message do |msg|
+	bot.on :message do |msg|
 		commands.check_cmds(bot, msg, plug)
 	end
 ```
