@@ -676,6 +676,7 @@ class Commands_manager
 
 		0.upto(@size - 1) do |i|
 			if msg.message_regex(@reg_s[i])
+				File.write("./log", msg, File.size("./log"), mode: 'a')
 				@hook_s[i].call(ircbot, msg, pluginmgr)
 			end
 		end

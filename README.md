@@ -479,6 +479,7 @@ This feature allows you to make commands by regex that can:
 - Tell the bot to do something
 - Tell the bot to change state
 - Control the Plugin manager
+- write to the ./log file when a hook is used
 
 
 ```ruby
