@@ -113,7 +113,7 @@ Initialized with connection information
 
 > setup creates 2 log files
 
->- ./log which logs messages that trigger Command_manager hooks as well as private messages
+>- ./log which logs messages that are saved on Command_manager hooks as well as private messages
 >- ./errlog which records errors
 
 
