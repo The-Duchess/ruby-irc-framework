@@ -279,6 +279,13 @@ class Plugin_manager
 				begin
 					return get_plugin(name).script(message, admins, backlog) # plugins use the IRC_message object
 				rescue => e
+					if File.exist?("./errlog")
+						File.write("./errlog", "PLUGIN #{name} FAILED TO RUN", File.size("./errlog"), mode: 'a')
+						File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
+						File.write("./errlog", e.to_s, File.size("./errlog"), mode: 'a')
+						File.write("./errlog", e.backtrace.to_s, File.size("./errlog"), mode: 'a')
+						File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
+					end
 					return "an error occured for plugin: #{name}"
 				end
 			end
@@ -327,6 +334,13 @@ class Plugin_manager
 				response = "#{name[0..-4]} loaded"
 			rescue => e
 				response = "cannot load plugin"
+				if File.exist?("./errlog")
+					File.write("./errlog", "PLUGIN #{name} FAILED TO LOAD", File.size("./errlog"), mode: 'a')
+					File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
+					File.write("./errlog", e.to_s, File.size("./errlog"), mode: 'a')
+					File.write("./errlog", e.backtrace.to_s, File.size("./errlog"), mode: 'a')
+					File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
+				end
 			end
 		else
 			begin
@@ -342,6 +356,13 @@ class Plugin_manager
 				response = "#{name} loaded"
 			rescue => e
 				response = "cannot load plugin"
+				if File.exist?("./errlog")
+					File.write("./errlog", "PLUGIN #{name} FAILED TO LOAD", File.size("./errlog"), mode: 'a')
+					File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
+					File.write("./errlog", e.to_s, File.size("./errlog"), mode: 'a')
+					File.write("./errlog", e.backtrace.to_s, File.size("./errlog"), mode: 'a')
+					File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
+				end
 			end
 		end
 		$LOAD_PATH << './'
@@ -586,6 +607,7 @@ class IRCBot
 	def create_log
 		if !File.exist?("./log")
 			File.open("./log", "w+") { |fw| fw.write("Command and Privmsg LOGS") }
+			File.open("./errlog", "w+") { |fw| fw.write("Error LOGS") }
 		end
 	end
 
@@ -600,8 +622,7 @@ class IRCBot
 		self.join_channels(channels_s)
 
 		self.on :message do |msg|
-
-			if msg.channel == msg.nick
+			if self.nick_name == msg.channel
 				File.write("./log", msg.ircmsg, File.size("./log"), mode: 'a')
 			end
 
@@ -610,9 +631,9 @@ class IRCBot
 			end
 		end
 
-		self.on :message do |msg|
-			if self.admins.include? msg.nick and msg.message_regex(/^`plsgo$/) then abort end
-		end
+		# self.on :message do |msg|
+		# 	if self.admins.include? msg.nick and msg.message_regex(/^`plsgo$/) then abort end
+		# end
 	end
 
 	def start!
@@ -677,7 +698,17 @@ class Commands_manager
 		0.upto(@size - 1) do |i|
 			if msg.message_regex(@reg_s[i])
 				File.write("./log", msg, File.size("./log"), mode: 'a')
-				@hook_s[i].call(ircbot, msg, pluginmgr)
+				begin
+					@hook_s[i].call(ircbot, msg, pluginmgr)
+				rescue => e
+					if File.exist?("./errlog")
+						File.write("./errlog", "COMMAND FAILED TO EXECUTE", File.size("./errlog"), mode: 'a')
+						File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
+						File.write("./errlog", e.to_s, File.size("./errlog"), mode: 'a')
+						File.write("./errlog", e.backtrace.to_s, File.size("./errlog"), mode: 'a')
+						File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
+					end
+				end
 			end
 		end
 	end

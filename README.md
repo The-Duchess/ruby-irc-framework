@@ -111,6 +111,11 @@ Initialized with connection information
 >- the nickserv pass (can be "" if you do not want to use it)
 >- an array of channels to join
 
+> setup creates 2 log files
+
+>- ./log which logs messages that trigger Command_manager hooks as well as private messages
+>- ./errlog which records errors
+
 
 ```ruby
 	ircbot.setup(use_ssl, use_server_pass, server_pass, nickserv_pass, channels)
