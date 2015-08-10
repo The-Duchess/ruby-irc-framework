@@ -24,7 +24,7 @@ plugins_list.each { |a| plug.plugin_load(a) }
 
 commands = Commands_manager.new
 
-commands.on /^!join (\S+)/ do |ircbot, msg, pluginmgr|
+commands.on /^!join ##?(\S+)/ do |ircbot, msg, pluginmgr|
       channel = msg.message.split(" ")[1].to_s
       ircbot.join(channel)
 end
