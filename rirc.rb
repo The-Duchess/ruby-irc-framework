@@ -633,10 +633,6 @@ class IRCBot
 				@backlog.push(msg)
 			end
 		end
-
-		# self.on :message do |msg|
-		# 	if self.admins.include? msg.nick and msg.message_regex(/^`plsgo$/) then abort end
-		# end
 	end
 
 	def start!
