@@ -607,6 +607,9 @@ class IRCBot
 	def create_log
 		if !File.exist?("./log")
 			File.open("./log", "w+") { |fw| fw.write("Command and Privmsg LOGS") }
+		end
+
+		if !File.exist?("./errlog")
 			File.open("./errlog", "w+") { |fw| fw.write("Error LOGS") }
 		end
 	end
