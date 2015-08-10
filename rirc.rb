@@ -2,6 +2,8 @@
 #
 ############################################################
 # Author: Alice "Duchess" Archer
+# Copyright (c) 2015 under the MIT License
+# see COPYING.md for full copyright
 # Name: rirc
 # Description: IRC framework for IRC bots written in ruby
 ############################################################
