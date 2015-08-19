@@ -24,9 +24,14 @@ plugins_list.each { |a| plug.plugin_load(a) }
 
 commands = Commands_manager.new
 
-commands.on /^!join ##?(\S+)/ do |ircbot, msg, pluginmgr|
+commands.on /^`join ##?(\S+)$/ do |ircbot, msg, pluginmgr|
       channel = msg.message.split(" ")[1].to_s
       ircbot.join(channel)
+end
+
+commands.on /^`list$/ do |ircbot, msg, pluginmgr|
+    ircbot.notice(msg.nick, "Plugins")
+    pluginmgr.get_names.each { |a| ircbot.notice(msg.nick, "  - #{a}") }
 end
 
 bot.on :message do |msg|
@@ -34,15 +39,12 @@ bot.on :message do |msg|
 
       responses = plug.check_all(msg, bot.admins, bot.backlog)
       responses.each { |a| bot.say(a) }
-end
 
-bot.on :message do |msg|
       case msg.message
       when /^#{bot.nick_name}[,:] (h|H)ello/ then
             bot.privmsg(msg.channel, "hi: #{msg.nick}")
       end
 end
-
 
 bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 bot.start!
