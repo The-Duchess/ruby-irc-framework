@@ -625,7 +625,7 @@ class IRCBot
 		self.join_channels(channels_s)
 
 		self.on :message do |msg|
-			if self.nick_name == msg.channel
+			if msg.nick == msg.channel
 				File.write("./log", msg.ircmsg, File.size("./log"), mode: 'a')
 			end
 
