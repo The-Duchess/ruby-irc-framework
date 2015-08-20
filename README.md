@@ -130,6 +130,7 @@ Initialized with connection information
 
 - on which allows you to create hooks to blocks of code for different purposes that are covered in the below code.
 
+> the priority in which they are checked is 1) commands, 2) message, 3) ircmsg
 
 
 ```ruby

@@ -644,18 +644,18 @@ class IRCBot
 			if ircmsg == "PING" or self.ignore.include?(msg.nick) then next end
 
 			begin
-				hooks = @hooks['message']
+				hooks = @hooks['command']
 				if hooks != nil
-					hooks.each { |h| h.call(msg) }
+					hooks.each { |h| h.call(msg.channel, msg.command) }
 				end
 			rescue => e
 				# do not do anything
 			end
 
 			begin
-				hooks = @hooks['command']
+				hooks = @hooks['message']
 				if hooks != nil
-					hooks.each { |h| h.call(msg.channel, msg.command) }
+					hooks.each { |h| h.call(msg) }
 				end
 			rescue => e
 				# do not do anything
