@@ -24,14 +24,25 @@ plugins_list.each { |a| plug.plugin_load(a) }
 
 commands = Commands_manager.new
 
-commands.on /^`join ##?(\S+)$/ do |ircbot, msg, pluginmgr|
+commands.on /^!join (\S+)$/ do |ircbot, msg, pluginmgr|
       channel = msg.message.split(" ")[1].to_s
       ircbot.join(channel)
 end
 
-commands.on /^`list$/ do |ircbot, msg, pluginmgr|
+commands.on /^!list$/ do |ircbot, msg, pluginmgr|
     ircbot.notice(msg.nick, "Plugins")
     pluginmgr.get_names.each { |a| ircbot.notice(msg.nick, "  - #{a}") }
+end
+
+commands.on /^!help (\S+)$/ do |ircbot, msg, pluginmgr|
+    name = msg.message.split(" ")[1].to_s
+    help = pluginmgr.plugin_help(name)
+
+    if not help == nil
+    	ircbot.notice(msg.nick, help)
+    else
+    	ircbot.notice(msg.nick, "no plugin #{help} found")
+    end
 end
 
 bot.on :message do |msg|
