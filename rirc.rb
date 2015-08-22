@@ -584,7 +584,7 @@ class IRCBot
 	end
 
 	def add_admin(nick)
-		@admins.push(nick)
+		if !@admins.include? nick then @admins.push(nick) end
 	end
 
 	def remove_admin(nick)
