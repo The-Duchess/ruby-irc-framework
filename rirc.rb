@@ -75,6 +75,15 @@ class Pluginf
 		@chan_list.push("any")
 	end
 
+	def initialize(regex, name, file_name, help, chan_list)
+		@regexp = Regexp.new(regex.to_s)
+		@name = name.to_s
+		@file_name = file_name.to_s
+		@help = help
+		@chan_list = []
+		chan_list.each { |a| @chan_list.push(a) }
+	end
+
 	# default function
 	def script(message, nick, chan)
 

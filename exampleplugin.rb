@@ -59,10 +59,12 @@ module Loadable_Plugin
 		@filename = "exampleplugin.rb" # file name
 		@pluginname = "template" # name for plugin
 		@description = "NOTES ^| HELP" # description and or help
+		# @chan_list = ["#chat"] # channels this plugin is allowed to react from
 
 		# plugin = Class_name.new(regex, name, file_name, help)
 		# this temporary global is used for handing the new plugin back to the bot
 		@plugin = Template.new(@reg, @pluginname, @filename, @description)
+		# @plugin = Template.new(@reg, @pluginname, @filename, @description, @chan_list)
 	end
 
 	# DO NOT CHANGE

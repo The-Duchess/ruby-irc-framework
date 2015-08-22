@@ -31,7 +31,9 @@ This help is presented to help you understand the plugin system and to easily bu
             		@filename = "" # file name
             		@pluginname = "" # name for plugin
             		@description = "" # description and or help
+                        # @chan_list = ["#chat"] # channels this plugin is allowed to react from
             		@plugin = Template.new(@reg, @pluginname, @filename, @description)
+                        # @plugin = Template.new(@reg, @pluginname, @filename, @description, @chan_list)
             	end
 
             	def get_plugin
@@ -54,6 +56,7 @@ This help is presented to help you understand the plugin system and to easily bu
 >- add any functions you may need to the class
 >- [optional] editing the initialization function for the class (this will be covered at the end)
 >- initialize function to set internal variables for the plugin. these control
+>- [optional] set a list of channels the plugin will use instead of being able to react in any channel
 
 >>- regex that will trigger the plugin being called on a message
 
@@ -65,6 +68,7 @@ This help is presented to help you understand the plugin system and to easily bu
 
 >>- the creation of an instance of the plugin class which will trigger when the plugin is loaded and handed back from the loader
 
+>>- creating the instance of your plugin with a predetermined set of channels to react from.
 
 **plugin script function**
 
