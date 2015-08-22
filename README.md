@@ -235,7 +235,7 @@ Initialized with connection information
 
 
 ```ruby
-	ircbot.ctcp("#chat", "")
+	ircbot.ctcp("dest", "")
 ```
 
 - part parts from a destination with the reason message
