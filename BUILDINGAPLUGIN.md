@@ -161,6 +161,15 @@ You also have access to a number of built in functions inside the default plugin
             @chan_list = []
             @chan_list.push("any")
       end
+
+      def initialize(regex, name, file_name, help, chan_list)
+            @regexp = Regexp.new(regex.to_s)
+            @name = name.to_s
+            @file_name = file_name.to_s
+            @help = help
+            @chan_list = []
+            chan_list.each { |a| @chan_list.push(a) }
+      end
 ```
 
 > Code that is called when a plugin is unloaded
