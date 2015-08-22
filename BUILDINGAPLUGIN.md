@@ -68,7 +68,7 @@ This help is presented to help you understand the plugin system and to easily bu
 
 >>- the creation of an instance of the plugin class which will trigger when the plugin is loaded and handed back from the loader
 
->>- creating the instance of your plugin with a predetermined set of channels to react from.
+>>- creating the instance of your plugin with a predetermined set of channels to react from instead of the default of it being able to operate in any channel.
 
 **plugin script function**
 
