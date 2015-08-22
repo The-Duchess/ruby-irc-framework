@@ -1,5 +1,5 @@
 # **Ruby IRC Framework**
-**Version 0.5.7**
+**Version 0.6.1**
 
 **Important Notes**
 
@@ -425,6 +425,31 @@ Initialized with the plugin folder file path
 
 ```ruby
 	if pluginmgr.plugin_loaded("name") then return true end
+```
+
+- add_chan takes a plugin name and a channel and adds the channel to the plugin's allowed channel list
+
+
+```ruby
+	pluginmgr.add_chan("name", "#chat")
+
+```
+
+- add_chan_clear_any takes a plugin name and a channel and adds the channel to the plugin's allowed channel list but also removes the option from a plugin that allows it to be used in any channel.
+
+
+```ruby
+	pluginmgr.add_chan_clear_any("name", "#chat")
+	# the removal of thee any option can be restored with add_chan
+	pluginmgr.add_chan("name", "any")
+```
+
+- rm_chan removes a channel from the allowed channel list
+
+
+```ruby
+	pluginmgr.rm_chan("name", "#chat")
+
 ```
 
 > regex functions

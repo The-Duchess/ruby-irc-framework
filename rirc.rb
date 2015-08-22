@@ -103,6 +103,14 @@ class Pluginf
 	def cleanup
 		return ""
 	end
+
+	def rm_chan(channel)
+		@chan_list.delete_if { |a| channel == a }
+	end
+
+	def add_chan(channel)
+		if !@chan_list.include? channel then @chan_list.push(channel) end
+	end
 end
 
 class Plugin_manager
@@ -172,6 +180,46 @@ class Plugin_manager
 		@plugins.each { |a| names.push(a.chans) }
 
 		return names
+	end
+
+	def get_chans(name)
+
+		if !plugin_loaded(name)
+			return nil
+		end
+
+		return get_plugin(name).chans
+	end
+
+	def add_chan(plugin_name, channel)
+		if !plugin_loaded(name)
+			return "#{plugin_name} is not loaded"
+		end
+
+		get_plugin(name).add_chan(channel)
+
+		return "#{channel} added to #{plugin_name}"
+	end
+
+	def add_chan_clear_any(plugin_name, channel)
+		if !plugin_loaded(name)
+			return "#{plugin_name} is not loaded"
+		end
+
+		rm_chan(plugin_name, "any")
+		add_chan(plugin_name, channel)
+
+		return "#{channel} added to #{plugin_name}"
+	end
+
+	def rm_chan(plugin_name, channel)
+		if !plugin_loaded(name)
+			return "#{plugin_name} is not loaded"
+		end
+
+		get_plugin(name).rm_chan(channel)
+
+		return "#{channel} removed from #{plugin_name}"
 	end
 
 	def get_regexps
