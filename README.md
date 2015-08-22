@@ -376,6 +376,13 @@ Initialized with the plugin folder file path
 	plugin_chans = pluginmgr.get_chans
 ```
 
+- get_chans has an alternate function to get chans for a plugin by name gets an array of plugin channels (array) of a loaded plugin by name
+
+
+```ruby
+	plugin_chans = pluginmgr.get_chans("name")
+```
+
 - get_regexps gets an array of plugin regexes of all loaded plugins
 
 
