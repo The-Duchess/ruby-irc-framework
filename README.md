@@ -454,7 +454,7 @@ Initialized with the plugin folder file path
 
 > regex functions
 
-- check_plugin
+- check_plugin checks a plugin against the irc message and runs the plugin's script function if the plugin's regex matches the irc message and it is allowed to be used in the channel the irc message was sent.
 
 
 ```ruby
