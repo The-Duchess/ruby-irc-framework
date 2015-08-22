@@ -516,6 +516,7 @@ class IRCBot
 
 	def part(dest, message)
 
+		@channels.delete_if { |a| dest == a }
 		say "PART #{dest} :#{message}"
 	end
 
