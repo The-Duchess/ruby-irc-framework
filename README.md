@@ -1,5 +1,5 @@
 # **Ruby IRC Framework**
-**Version 0.5.6**
+**Version 0.5.7**
 
 **Important Notes**
 
@@ -243,6 +243,20 @@ Initialized with connection information
 
 ```ruby
 	ircbot.part("#chat", "this exchange is over")
+```
+
+- rm_chan which takes a channel and removes it from the IRCBot active channel list.
+
+
+```ruby
+	ircbot.rm_chan(channel)
+```
+
+- add_chan which takes a channel and adds it to the IRCBot active channel list.
+
+
+```ruby
+	ircbot.add_chan(channel)
 ```
 
 - quit quits with the reason message

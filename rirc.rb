@@ -520,6 +520,14 @@ class IRCBot
 		say "PART #{dest} :#{message}"
 	end
 
+	def rm_chan(channel)
+		@channels.delete_if { |a| channel == a }
+	end
+
+	def add_chan(channel)
+		if !@channels.include? channel then @channels.push(channel) end
+	end
+
 	def quit(message)
 
 		say "QUIT :#{message}"
