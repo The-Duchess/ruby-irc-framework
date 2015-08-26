@@ -80,8 +80,7 @@ class Pluginf
 		@name = name.to_s
 		@file_name = file_name.to_s
 		@help = help
-		@chan_list = []
-		chan_list.each { |a| @chan_list.push(a) }
+		@chan_list = chan_list.map(&:to_s)
 	end
 
 	# default function
