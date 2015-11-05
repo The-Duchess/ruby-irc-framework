@@ -14,7 +14,7 @@ admins = ["YOURNICK"]
 use_ssl = false
 use_pass = false
 plugin_folder = "./plugins"
-plugins_list = ["cat.rb", "youtube.rb"]
+plugins_list = ["cat.rb"]
 
 bot = IRCBot.new(network, port, nick, username, realname)
 bot.set_admins(admins)

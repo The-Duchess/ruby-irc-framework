@@ -13,7 +13,7 @@ module Loadable_Plugin
 	class Sed_sr < Pluginf
 		def script(message, admins, backlog)
 
-		
+
 			command_s = message.message
 
 			msg_l = message.message.length.to_i - 1
@@ -127,7 +127,6 @@ module Loadable_Plugin
 		# @chan_list = ["#chat"] # channels this plugin is allowed to react from
 
 		# plugin = Class_name.new(regex, name, file_name, help)
-		# this temporary global is used for handing the new plugin back to the bot
 		@plugin = Sed_sr.new(@reg, @pluginname, @filename, @description)
 		# @plugin = Template.new(@reg, @pluginname, @filename, @description, @chan_list)
 	end
