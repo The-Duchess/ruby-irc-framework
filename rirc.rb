@@ -125,6 +125,13 @@ class Plugin_manager
 	def initialize(plugin_folder)
 		@plugins = []
 		@plugin_folder = plugin_folder
+		@err_path = "./.errlog"
+	end
+
+	def initialize(plugin_folder, err_path)
+		@plugins = []
+		@plugin_folder = plugin_folder
+		@err_path = err_path.to_s
 	end
 
 	# returns all the plugins
@@ -335,12 +342,12 @@ class Plugin_manager
 				begin
 					return get_plugin(name).script(message, admins, backlog) # plugins use the IRC_message object
 				rescue => e
-					if File.exist?("./errlog")
-						File.write("./errlog", "PLUGIN #{name} FAILED TO RUN", File.size("./errlog"), mode: 'a')
-						File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
-						File.write("./errlog", e.to_s, File.size("./errlog"), mode: 'a')
-						File.write("./errlog", e.backtrace.to_s, File.size("./errlog"), mode: 'a')
-						File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
+					if File.exist?(@err_path)
+						File.write(@err_path, "PLUGIN #{name} FAILED TO RUN", File.size(@err_path), mode: 'a')
+						File.write(@err_path, "======================================================", File.size(@err_path), mode: 'a')
+						File.write(@err_path, e.to_s, File.size(@err_path), mode: 'a')
+						File.write(@err_path, e.backtrace.to_s, File.size(@err_path), mode: 'a')
+						File.write(@err_path, "======================================================", File.size(@err_path), mode: 'a')
 					end
 					return "an error occured for plugin: #{name}"
 				end
@@ -390,12 +397,12 @@ class Plugin_manager
 				response = "#{name[0..-4]} loaded"
 			rescue => e
 				response = "cannot load plugin"
-				if File.exist?("./errlog")
-					File.write("./errlog", "PLUGIN #{name} FAILED TO LOAD", File.size("./errlog"), mode: 'a')
-					File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
-					File.write("./errlog", e.to_s, File.size("./errlog"), mode: 'a')
-					File.write("./errlog", e.backtrace.to_s, File.size("./errlog"), mode: 'a')
-					File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
+				if File.exist?(@err_path)
+					File.write(@err_path, "PLUGIN #{name} FAILED TO LOAD", File.size(@err_path), mode: 'a')
+					File.write(@err_path, "======================================================", File.size(@err_path), mode: 'a')
+					File.write(@err_path, e.to_s, File.size(@err_path), mode: 'a')
+					File.write(@err_path, e.backtrace.to_s, File.size(@err_path), mode: 'a')
+					File.write(@err_path, "======================================================", File.size(@err_path), mode: 'a')
 				end
 			end
 		else
@@ -412,12 +419,12 @@ class Plugin_manager
 				response = "#{name} loaded"
 			rescue => e
 				response = "cannot load plugin"
-				if File.exist?("./errlog")
-					File.write("./errlog", "PLUGIN #{name} FAILED TO LOAD", File.size("./errlog"), mode: 'a')
-					File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
-					File.write("./errlog", e.to_s, File.size("./errlog"), mode: 'a')
-					File.write("./errlog", e.backtrace.to_s, File.size("./errlog"), mode: 'a')
-					File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
+				if File.exist?(@err_path)
+					File.write(@err_path, "PLUGIN #{name} FAILED TO LOAD", File.size(@err_path), mode: 'a')
+					File.write(@err_path, "======================================================", File.size(@err_path), mode: 'a')
+					File.write(@err_path, e.to_s, File.size(@err_path), mode: 'a')
+					File.write(@err_path, e.backtrace.to_s, File.size(@err_path), mode: 'a')
+					File.write(@err_path, "======================================================", File.size(@err_path), mode: 'a')
 				end
 			end
 		end
@@ -464,6 +471,24 @@ class IRCBot
 		@socket = nil
 		@channels = []
 		@admins = []
+		@ignore = []
+		@hooks = {}
+		@backlog = []
+		@log_path = "./.log"
+		@err_path = "./.errlog"
+	end
+
+	def initialize(network, port, nick, user_name, real_name, log_path, err_path)
+		@network = network
+		@port = port
+		@nick = nick
+		@user_name = user_name
+		@real_name = real_name
+		@socket = nil
+		@channels = []
+		@admins = []
+		@log_path = log_path
+		@err_path = err_path
 		@ignore = []
 		@hooks = {}
 		@backlog = []
@@ -670,12 +695,12 @@ class IRCBot
 	end
 
 	def create_log
-		if !File.exist?("./log")
-			File.open("./log", "w+") { |fw| fw.write("Command and Privmsg LOGS") }
+		if !File.exist?(@log_path)
+			File.open(@log_path, "w+") { |fw| fw.write("Command and Privmsg LOGS") }
 		end
 
-		if !File.exist?("./errlog")
-			File.open("./errlog", "w+") { |fw| fw.write("Error LOGS") }
+		if !File.exist?(@err_path)
+			File.open(@err_path, "w+") { |fw| fw.write("Error LOGS") }
 		end
 	end
 
@@ -691,7 +716,7 @@ class IRCBot
 
 		self.on :message do |msg|
 			if msg.nick == msg.channel
-				File.write("./log", msg.ircmsg, File.size("./log"), mode: 'a')
+				File.write(@log_path, msg.ircmsg, File.size(@log_path), mode: 'a')
 			end
 
 			if !self.nick_name == msg.nick and !self.ignore.include? msg.nick
@@ -744,6 +769,16 @@ class Commands_manager
 		@reg_s = []
 		@hook_s = []
 		@size = 0
+		@log_path = "./.log"
+		@err_path = "./.errlog"
+	end
+
+	def initialize(log_path, err_path)
+		@reg_s = []
+		@hook_s = []
+		@size = 0
+		@log_path = log_path
+		@err_path = err_path
 	end
 
 	def on(reg, &block)
@@ -761,16 +796,16 @@ class Commands_manager
 
 		0.upto(@size - 1) do |i|
 			if msg.message_regex(@reg_s[i])
-				File.write("./log", msg, File.size("./log"), mode: 'a')
+				File.write(@log_path, msg, File.size(@log_path), mode: 'a')
 				begin
 					@hook_s[i].call(ircbot, msg, pluginmgr)
 				rescue => e
-					if File.exist?("./errlog")
-						File.write("./errlog", "COMMAND FAILED TO EXECUTE", File.size("./errlog"), mode: 'a')
-						File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
-						File.write("./errlog", e.to_s, File.size("./errlog"), mode: 'a')
-						File.write("./errlog", e.backtrace.to_s, File.size("./errlog"), mode: 'a')
-						File.write("./errlog", "======================================================", File.size("./errlog"), mode: 'a')
+					if File.exist?(@err_path)
+						File.write(@err_path, "COMMAND FAILED TO EXECUTE", File.size(@err_path), mode: 'a')
+						File.write(@err_path, "======================================================", File.size(@err_path), mode: 'a')
+						File.write(@err_path, e.to_s, File.size(@err_path), mode: 'a')
+						File.write(@err_path, e.backtrace.to_s, File.size(@err_path), mode: 'a')
+						File.write(@err_path, "======================================================", File.size(@err_path), mode: 'a')
 					end
 				end
 			end

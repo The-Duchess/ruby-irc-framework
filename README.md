@@ -1,5 +1,5 @@
 # **Ruby IRC Framework**
-**Version 0.6.1**
+**Version 0.6.3**
 
 **Important Notes**
 
