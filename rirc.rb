@@ -127,13 +127,13 @@ class Plugin_manager
 		@plugin_folder = plugin_folder
 		@err_path = "./.errlog"
 	end
-
+=begin
 	def initialize(plugin_folder, err_path)
 		@plugins = []
 		@plugin_folder = plugin_folder
 		@err_path = err_path.to_s
 	end
-
+=end
 	# returns all the plugins
 	def plugins
 
@@ -477,7 +477,7 @@ class IRCBot
 		@log_path = "./.log"
 		@err_path = "./.errlog"
 	end
-
+=begin
 	def initialize(network, port, nick, user_name, real_name, log_path, err_path)
 		@network = network
 		@port = port
@@ -493,7 +493,7 @@ class IRCBot
 		@hooks = {}
 		@backlog = []
 	end
-
+=end
 	def backlog
 		return @backlog
 	end
@@ -773,6 +773,7 @@ class Commands_manager
 		@err_path = "./.errlog"
 	end
 
+=begin
 	def initialize(log_path, err_path)
 		@reg_s = []
 		@hook_s = []
@@ -780,7 +781,7 @@ class Commands_manager
 		@log_path = log_path
 		@err_path = err_path
 	end
-
+=end
 	def on(reg, &block)
 	      reg = Regexp.new(reg.to_s)
 	      @reg_s.push(reg)
