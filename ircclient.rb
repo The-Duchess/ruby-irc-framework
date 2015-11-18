@@ -27,10 +27,11 @@ main_thread = Thread.new {
 
       while true
             input = STDIN.gets
-            channel = input.split(" ")[0].to_s
+            tokens = input.split(" ")
+            channel = tokens[0].to_s
             output = ""
-            1.upto(input.split(" ").length - 1) do |i|
-                  output.concat("#{input.split(" ")[i]} ")
+            1.upto(tokens.length - 1) do |i|
+                  output.concat("#{tokens[i} ")
             end
             output = output[0..-2].to_s
             bot.privmsg(channel, output)
