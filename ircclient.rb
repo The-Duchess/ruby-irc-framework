@@ -3,15 +3,14 @@
 require_relative 'rirc.rb' # this line must be at the top of the file
 
 network = "irc.freenode.net"
-port = 6697
+port = 6667
 pass = ""
-nick = "yoth"
+nick = "YOURNICK"
 username = "rircbot"
 realname = "rircbot"
 nickserv_pass = ""
-channels = ["#lainchan"]
-admins = ["yoth"]
-use_ssl = true
+channels = ["#YOURCHANNEL"]
+use_ssl = false
 use_pass = false
 
 bot = IRCBot.new(network, port, nick, username, realname)
