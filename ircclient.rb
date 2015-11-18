@@ -22,8 +22,6 @@ end
 
 bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 bot_thread = Thread.new { bot.start! }
-#bot_thread.run
-#bot_thread.join
 
 main_thread = Thread.new {
 
@@ -46,6 +44,3 @@ while true
       sleep 0.001
       main_thread.join(0.1)
 end
-
-#main_thread.run
-#main_thread.join
