@@ -50,6 +50,8 @@ Place rirc.rb in the same directory as your main ircbot file
 
 > the functioning bot also supports use of an example [plugin](https://github.com/The-Duchess/ruby-irc-framework/blob/master/plugins/cat.rb)
 
+> a rudimentary [irc client](https://github.com/The-Duchess/ruby-irc-framework/blob/master/ircclient.rb) exists using this framework
+
 > a full IRC bot [project](https://github.com/The-Duchess/husk) exists using this framework
 
 
