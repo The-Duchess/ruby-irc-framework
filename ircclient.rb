@@ -3,15 +3,14 @@
 require_relative 'rirc.rb' # this line must be at the top of the file
 
 network = "irc.freenode.net"
-port = 6697
+port = 6667
 pass = ""
-nick = "yoth"
+nick = "YOURNICK"
 username = "rircbot"
 realname = "rircbot"
 nickserv_pass = ""
-channels = ["#lainchan"]
-admins = ["yoth"]
-use_ssl = true
+channels = ["#YOURCHANNEL"]
+use_ssl = false
 use_pass = false
 
 bot = IRCBot.new(network, port, nick, username, realname)
@@ -23,17 +22,16 @@ end
 
 bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
 bot_thread = Thread.new { bot.start! }
-#bot_thread.run
-#bot_thread.join
 
 main_thread = Thread.new {
 
       while true
             input = STDIN.gets
-            channel = input.split(" ")[0].to_s
+            tokens = input.split(" ")
+            channel = tokens[0].to_s
             output = ""
-            1.upto(input.split(" ").length - 1) do |i|
-                  output.concat("#{input.split(" ")[i]} ")
+            1.upto(tokens.length - 1) do |i|
+                  output.concat("#{tokens[i} ")
             end
             output = output[0..-2].to_s
             bot.privmsg(channel, output)
@@ -47,6 +45,3 @@ while true
       sleep 0.001
       main_thread.join(0.1)
 end
-
-#main_thread.run
-#main_thread.join
