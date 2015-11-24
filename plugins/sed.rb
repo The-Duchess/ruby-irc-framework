@@ -77,9 +77,16 @@ module Loadable_Plugin
 			end
 
 			if included then
-				File.open("./temp", 'w') { |fw| fw.puts "#{string_a}" }
-				File.open("./temp_s", 'w') { |fw| fw.puts "#{command_s}" }
-				@r_s = `sed -r -f ./temp_s < ./temp`
+				if command_s.split("\/").length > 3
+					if command_s.split("\/")[3].to_s == "g"
+						@r_s = string_a.gsub(Regexp.new(command_s.split("\/")[1]), command_s.split("\/")[2].to_s)
+					else
+						# not completed
+					end
+				else
+					@r_s = string_a.sub(Regexp.new(command_s.split("\/")[1]), command_s.split("\/")[2].to_s)
+				end
+
 				if @r_s.length > 0 then
 					@r.concat(@r_s.to_s)
 				else
