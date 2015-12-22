@@ -55,9 +55,9 @@ Place rirc.rb in the same directory as your main ircbot file
 > a full IRC bot [project](https://github.com/The-Duchess/husk) exists using this framework
 
 
-# Classes Provided
+# Objects Provided
 
-**→ IRC_Message**
+**IRC_Message**
 
 Created by ircbot.parse or initialized with message information
 
@@ -69,9 +69,9 @@ Created by ircbot.parse or initialized with message information
 	ircmsg = IRC_message.new(command, nick, channel, message, msg)
 ```
 
->Provides a structure to store irc messages in a parsed form
+*Provides a structure to store irc messages in a parsed form*
 
->Provides the functions assuming a message looks like
+*Provides the functions assuming a message looks like*
 
 > :[nick]!~username@client [command] [channel] :[message]
 
@@ -91,7 +91,7 @@ Created by ircbot.parse or initialized with message information
 	ircmsg.message_regex(/^!join (\S+)/)
 ```
 
-**→ IRCBot**
+**IRCBot**
 
 Initialized with connection information
 
@@ -100,9 +100,9 @@ Initialized with connection information
 	ircbot = IRCBot.new(network, port, nick, user_name, real_name)
 ```
 
->Provides a basic core irc bot
+*Provides a basic core irc bot*
 
->Provides a number of functions for operation
+*Provides a number of functions for operation*
 
 
 - setup which takes the following arguments and connects and joins channels
@@ -163,7 +163,7 @@ Initialized with connection information
 
 - network, port, nick_name, user_name, real_name, backlog and socket all return these respective values
 
-> the backlog is updated automatically for you if using the following to run the bot
+the backlog is updated automatically for you if use bot.start!
 
 
 ```ruby
@@ -318,7 +318,7 @@ Initialized with connection information
 	ircbot.join_channels(["#chat"])
 ```
 
-**→ Plugin_manager**
+**Plugin_manager**
 
 Initialized with the plugin folder file path
 
@@ -327,11 +327,11 @@ Initialized with the plugin folder file path
 	pluginmgr = Plugin_manager.new("/path/to/plugin/folder")
 ```
 
-> Plugins based on the [plugin template](https://github.com/The-Duchess/ruby-irc-framework/blob/master/exampleplugin.rb) the framework supports for plugin management.
+Plugins based on the [plugin template](https://github.com/The-Duchess/ruby-irc-framework/blob/master/exampleplugin.rb) the framework supports for plugin management.
 
-> The plugin template will tell you what parts are neccessary for creating a plugin.
+The plugin template will tell you what parts are neccessary for creating a plugin.
 
-> Two functional plugins are provided
+Two functional plugins are provided
 
 >- [YouTube](https://github.com/The-Duchess/ruby-irc-framework/blob/master/plugins/youtube.rb)
 
@@ -339,9 +339,9 @@ Initialized with the plugin folder file path
 
 >- [Cat](https://github.com/The-Duchess/ruby-irc-framework/blob/master/plugins/cat.rb)
 
-> Provided Functions
+*Provided Functions*
 
-> fetching functions
+_fetching functions_
 
 - plugins returns the array of currently loaded plugins
 
@@ -392,7 +392,7 @@ Initialized with the plugin folder file path
 	plugin_regexps = pluginmgr.get_regexps
 ```
 
-> search functions
+_search functions_
 
 - get_plugin gets a plugin by name and returns a Plugin object or nil if the plugin is not loaded
 
@@ -461,7 +461,7 @@ Initialized with the plugin folder file path
 
 ```
 
-> regex functions
+_regex functions_
 
 - check_plugin checks a plugin against the irc message and runs the plugin's script function if the plugin's regex matches the irc message and it is allowed to be used in the channel the irc message was sent.
 
@@ -470,19 +470,19 @@ Initialized with the plugin folder file path
 	temp_response = pluginmgr.check_plugin("name", ircmessage, ["apels"], [])
 ```
 
-> inputs:
+inputs:
 
->  ↰ plugin name
+>  plugin name
 
->  ↰ IRC_message object [to check against the plugin's regex and use in used plugins]
+>  IRC_message object [to check against the plugin's regex and use in used plugins]
 
->  ↰ array of admins [can be an empty array]
+>  array of admins [can be an empty array]
 
->  ↰ backlog array of IRC_message objects [can be an empty array]
+>  backlog array of IRC_message objects [can be an empty array]
 
-> output:
+output:
 
->  ↳ string to be sent to the socket (i.e "PRIVMSG #chat :hi")
+>  string to be sent to the socket (i.e "PRIVMSG #chat :hi")
 
 - check_all
 
@@ -491,17 +491,17 @@ Initialized with the plugin folder file path
 	temp_responses = pluginmgr.check_all(ircmessage, ["apels"], [])
 ```
 
-> inputs:
+inputs:
 
->  ↰ IRC_message object [to check against the plugin's regex and use in used plugins]
+>  IRC_message object [to check against the plugin's regex and use in used plugins]
 
->  ↰ array of admins [can be an empty array]
+>  array of admins [can be an empty array]
 
->  ↰ backlog array of IRC_message objects [can be an empty array]
+>  backlog array of IRC_message objects [can be an empty array]
 
-> output:
+output:
 
->  ↳ array of strings returned from check_plugin
+>  array of strings returned from check_plugin
 
 > plugin loading, unloading and reloading
 
@@ -527,7 +527,7 @@ Initialized with the plugin folder file path
 	pluginmgr.reload("name")
 ```
 
-**→ Command_manager**
+**Command_manager**
 
 This feature allows you to make commands by regex that can:
 - Tell the bot to do something
@@ -540,7 +540,7 @@ This feature allows you to make commands by regex that can:
 	cmnd = Command_manager.new
 ```
 
-> The command manager is a hook system like the ircbot's on function. It requires you to add a check to a new ircbot hook or place it in an existing one.
+The command manager is a hook system like the ircbot's on function. It requires you to add a check to a new ircbot hook or place it in an existing one.
 
 
 ```ruby
@@ -558,10 +558,10 @@ This feature allows you to make commands by regex that can:
 	end
 ```
 
-> The command hooks create blocks of code that are triggered on the regex and are given the arguments:
+The command hooks create blocks of code that are triggered on the regex and are given the arguments:
 
->- ircbot: an IRCBot instance
+- ircbot: an IRCBot instance
 
->- msg: an IRC_message object
+- msg: an IRC_message object
 
->- pluginmgr: a Plugin_manager instance
+- pluginmgr: a Plugin_manager instance
