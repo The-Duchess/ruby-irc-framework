@@ -15,7 +15,7 @@
 
 # To Use
 
-Install the gem
+Install the gem with this command
 
 	gem install ./rirc-0.6.3.gem
 
