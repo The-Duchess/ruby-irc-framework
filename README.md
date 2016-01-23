@@ -17,7 +17,7 @@
 
 Install the gem with this command
 
-	gem install ./rirc-0.6.3.gem
+	gem install rirc
 
 Then construct the bot.
 
