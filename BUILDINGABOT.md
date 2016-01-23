@@ -128,6 +128,14 @@ Add custom behavior
       end
 ```
 
+Add a quit command for the admin users
+
+```ruby
+      ircbot.stop! /^!quit$/ do |msg|
+            bot.privmsg(msg.channel, "leaving")
+      end
+```
+
 [Advanced Custom Behavior]
 
 

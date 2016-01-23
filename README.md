@@ -1,5 +1,9 @@
 # **Ruby IRC Framework**
-**Version 0.6.3**
+**Version 1.0.0**
+
+**Notes:**
+
+RubyGems.org only has version 0.6.3 so unless you use the gem in this repo you will not have the stop! function for the IRCBot object.
 
 **About**
 
@@ -17,7 +21,7 @@
 
 Install the gem with this command
 
-	gem install ./rirc-0.6.3.gem
+	gem install rirc
 
 Then construct the bot.
 
@@ -32,6 +36,10 @@ Then construct the bot.
 	      when /^#{bot.nick_name}[,:] (h|H)ello/ then
 	            bot.privmsg(msg.channel, "hi: #{msg.nick}")
 	      end
+	end
+
+	bot.stop! /^!quit$/ do |msg|
+		bot.privmsg(msg.channel, "halting")
 	end
 
 	bot.setup(use_ssl, use_pass, pass, nickserv_pass, channels)
@@ -124,6 +132,19 @@ Initialized with connection information
 
 ```ruby
 	ircbot.start!
+```
+
+
+- stop! which allows you to provide a regex for messages that will cause the bot to stop as well as provide code to be executed when it quits. these commands will only be usable by nicks in the admin list.
+
+```ruby
+	ircbot.stop /^!quit$/ do |msg|
+		bot.privmsg(msg.channel, "unloading plugins...")
+		pluginmgr.get_names.each do |plugin_name|
+			pluginmgr.unload(plugin_name) # unload plugins to do a clean shutdown
+		end
+		bot.privmsg(msg.channel, "leaving")
+	end
 ```
 
 - on which allows you to create hooks to blocks of code for different purposes that are covered in the below code.
