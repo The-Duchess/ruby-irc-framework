@@ -15,12 +15,7 @@
 
 # To Use
 
-Clone the repository.
-
-	git clone https://github.com/The-Duchess/ruby-irc-framework
-
-
-Navigate to ./gem and
+Install the gem
 
 	gem install ./rirc-0.6.3.gem
 
