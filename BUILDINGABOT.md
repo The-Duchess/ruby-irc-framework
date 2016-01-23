@@ -45,11 +45,11 @@
 - save the bot
 
 
-Include the framework
+Load the framework
 
 
 ```ruby
-      require_relative 'rirc.rb' # this line must be at the top of the file
+      require 'rirc.rb' # this line must be at the top of the file
 ```
 
 Configuration

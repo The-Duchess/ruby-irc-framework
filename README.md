@@ -1,12 +1,6 @@
 # **Ruby IRC Framework**
 **Version 0.6.3**
 
-**Important Notes**
-
->- The Plugins system changed after 0.3.4 but is no longer receiving updates that will affect compatibility.
-
->- The Commands_manager is no longer receiving updates that will affect compatibility.
-
 **About**
 
 > The rirc [Framework](https://github.com/The-Duchess/ruby-irc-framework/blob/master/rirc.rb)
@@ -21,12 +15,19 @@
 
 # To Use
 
-Place rirc.rb in the same directory as your main ircbot file
+Clone the repository.
+
+	git clone https://github.com/The-Duchess/ruby-irc-framework
 
 
+Navigate to ./gem and
+
+	gem install ./rirc-0.6.3.gem
+
+Then construct the bot.
 
 ```ruby
-	require_relative 'rirc.rb'
+	require 'rirc.rb'
 
 	ircbot = IRCBot.new(network, port, nick, user_name, real_name)
 	bot.set_admins(admins)
@@ -42,7 +43,7 @@ Place rirc.rb in the same directory as your main ircbot file
 	bot.start!
 ```
 
-> for further help building a bot check this [help](https://github.com/The-Duchess/ruby-irc-framework/blob/master/BUILDINGABOT.md)
+> for further help building a bot once you have the gem installed check this [help](https://github.com/The-Duchess/ruby-irc-framework/blob/master/BUILDINGABOT.md)
 
 > if you have a working bot folder and plugins folder and want to make plugins check this [help](https://github.com/The-Duchess/ruby-irc-framework/blob/master/BUILDINGAPLUGIN.md)
 
