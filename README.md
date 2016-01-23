@@ -138,7 +138,7 @@ Initialized with connection information
 - stop! which allows you to provide a regex for messages that will cause the bot to stop as well as provide code to be executed when it quits. these commands will only be usable by nicks in the admin list.
 
 ```ruby
-	ircbot.stop /^!quit$/ do |msg|
+	ircbot.stop! /^!quit$/ do |msg|
 		bot.privmsg(msg.channel, "unloading plugins...")
 		pluginmgr.get_names.each do |plugin_name|
 			pluginmgr.unload(plugin_name) # unload plugins to do a clean shutdown
