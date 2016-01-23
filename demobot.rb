@@ -1,6 +1,6 @@
 #! /usr/bin/env ruby
 
-require_relative 'rirc.rb' # this line must be at the top of the file
+require 'rirc' # this line must be at the top of the file
 
 network = "irc.freenode.net"
 port = 6667

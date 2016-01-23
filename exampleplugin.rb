@@ -6,7 +6,7 @@
 # note: example code does not actually run
 # a running example should be posted soon
 
-load 'rirc.rb'
+require 'rirc'
 
 module Loadable_Plugin
 	class Template < Pluginf

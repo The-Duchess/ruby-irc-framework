@@ -49,7 +49,7 @@ Load the framework
 
 
 ```ruby
-      require 'rirc.rb' # this line must be at the top of the file
+      require 'rirc' # this line must be at the top of the file
 ```
 
 Configuration

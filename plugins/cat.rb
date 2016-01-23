@@ -3,7 +3,7 @@
 # author: apels <Alice Duchess>
 #############################################################################################
 
-load 'rirc.rb'
+require 'rirc'
 
 # plugin = Class_name.new(regex, name, file_name, help)
 module Loadable_Plugin

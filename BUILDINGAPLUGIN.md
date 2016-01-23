@@ -15,7 +15,7 @@ This help is presented to help you understand the plugin system and to easily bu
 
 
 ```ruby
-            load 'rirc.rb'
+            require 'rirc'
 
             module Loadable_Plugin
             	class Template < Pluginf

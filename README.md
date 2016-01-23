@@ -27,7 +27,7 @@ Navigate to ./gem and
 Then construct the bot.
 
 ```ruby
-	require 'rirc.rb'
+	require 'rirc'
 
 	ircbot = IRCBot.new(network, port, nick, user_name, real_name)
 	bot.set_admins(admins)

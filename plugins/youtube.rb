@@ -3,8 +3,8 @@
 # author: apels <Alice Duchess>
 #############################################################################################
 
-# note: example code does not actually run
-# a running example should be posted soon
+
+
 
 require 'google/api_client'
 require 'json'
@@ -12,8 +12,7 @@ require 'uri'
 require 'net/http'
 require 'multi_json'
 require 'date'
-
-load 'rirc.rb'
+require 'rirc'
 
 # plugin = Class_name.new(regex, name, file_name, help)
 # this temporary global is used for handing the new plugin back to the bot
