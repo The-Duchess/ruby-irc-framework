@@ -1,6 +1,10 @@
 # **Ruby IRC Framework**
 **Version 1.0.0**
 
+**Notes**
+
+- For people using the 0.6.3 version you will not be able to use the stop! function for IRCBot instances.
+
 **About**
 
 > The rirc [Framework](https://github.com/The-Duchess/ruby-irc-framework/blob/master/rirc.rb)
