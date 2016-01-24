@@ -476,6 +476,8 @@ class IRCBot
 		@backlog = []
 		@log_path = "./.log"
 		@err_path = "./.errlog"
+		@stop_hooks = {}
+		@stop_regs = []
 	end
 =begin
 	def initialize(network, port, nick, user_name, real_name, log_path, err_path)
@@ -686,6 +688,12 @@ class IRCBot
 		@hooks[type] << block
 	end
 
+	def stop!(reg, &block)
+		reg = Regexp.new(reg.to_s)
+		@stop_regs.push(reg)
+		@stop_hooks << block
+	end
+
 	def set_admins(admins_s)
 	      admins_s.each { |a| self.add_admin(a) }
 	end
@@ -755,6 +763,20 @@ class IRCBot
 				hooks = @hooks['ircmsg']
 				if hooks != nil
 					hooks.each { |h| h.call(msg.nick, msg.command, msg.channel, msg.message) }
+				end
+			rescue => e
+				# do not do anything
+			end
+
+			begin
+				hooks = @stop_hooks
+				i = 0
+				@stop_regs.each do |j|
+					if msg.message =~ j and @admins.include? msg.nick
+						hooks[i].call(msg)
+						return
+					end
+					i += 1
 				end
 			rescue => e
 				# do not do anything
