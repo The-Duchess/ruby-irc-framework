@@ -1,10 +1,6 @@
 # **Ruby IRC Framework**
 **Version 1.0.0**
 
-**Notes:**
-
-RubyGems.org only has version 0.6.3 so unless you use the gem in this repo you will not have the stop! function for the IRCBot object.
-
 **About**
 
 > The rirc [Framework](https://github.com/The-Duchess/ruby-irc-framework/blob/master/rirc.rb)
