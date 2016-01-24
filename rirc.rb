@@ -476,7 +476,7 @@ class IRCBot
 		@backlog = []
 		@log_path = "./.log"
 		@err_path = "./.errlog"
-		@stop_hooks = {}
+		@stop_hooks = []
 		@stop_regs = []
 	end
 =begin
