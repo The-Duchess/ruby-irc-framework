@@ -9,6 +9,8 @@
 
 > The rirc [Framework](https://github.com/The-Duchess/ruby-irc-framework/blob/master/rirc.rb)
 
+> the rirc framework [Gem](https://rubygems.org/gems/rirc)
+
 > Author: Alice "Duchess" Archer
 
 > Copyright 2015 MIT License
