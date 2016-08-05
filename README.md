@@ -30,7 +30,7 @@ Then construct the bot.
 ```ruby
 	require 'rirc'
 
-	ircbot = IRCBot.new(network, port, nick, user_name, real_name)
+	bot = IRCBot.new(network, port, nick, user_name, real_name)
 	bot.set_admins(admins)
 
 	bot.on :message do |msg|
